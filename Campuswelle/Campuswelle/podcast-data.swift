@@ -8,23 +8,15 @@
 
 import Foundation
 
-private struct __persistentParser {
-    static var parsers: Set<BNRSSFeedParser> = Set()
+func podcastFilter(news: News) -> Bool {
+    if let _ = news as? Podcast {
+        return true
+    }
+    return false
 }
 
-let PodcastFeed = NSURL(string: "http://feeds.feedburner.com/campuswelle")!
-
-func loadPodcastFeed(#success: (BNRSSFeed) -> Void, #failure: (NSError) -> Void) {
-    var parser: BNPodcastFeedParser?
-    parser = BNPodcastFeedParser(feedURL: PodcastFeed, withETag: nil, untilPubDate: nil,
-        success: { _, f in
-            __persistentParser.parsers.remove(parser!)
-            success(f)
-        },
-        failure: { _, f in
-            __persistentParser.parsers.remove(parser!)
-            failure(f)
-    })
-    __persistentParser.parsers.insert(parser!)
+func fetchPodcast(#success: ([Podcast]) -> (), #failure: (NSError) -> ()) {
+    fetchNews(success: { (news: [News]) -> () in
+        success(filter(news, podcastFilter) as! [Podcast])
+    }, failure: failure)
 }
-

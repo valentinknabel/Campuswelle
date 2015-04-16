@@ -1,5 +1,5 @@
 //
-//  album-data.swift
+//  Album.swift
 //  Campuswelle
 //
 //  Created by Valentin Knabel on 2015-04-16.
@@ -8,3 +8,6 @@
 
 import Foundation
 
+struct Album {
+    
+}
