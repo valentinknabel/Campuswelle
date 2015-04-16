@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        loadRSSFeed(success: { feed in
+            if let items = feed.items as? [BNRSSFeedItem] {
+                for i in items {
+                    println(i.title)
+                }
+            }
+
+            }, failure: { println($0) })
+        loadPodcastFeed(success: { feed in
+                feed.items
+                println(feed.items)
+            }, failure: { println($0) })
+        
         return true
     }
 
