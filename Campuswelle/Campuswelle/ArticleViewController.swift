@@ -30,7 +30,6 @@ class ArticleViewController: UIViewController {
         let htmlWrapperPath = NSBundle.mainBundle().pathForResource("wrapper", ofType: "html")
         let htmlWrapper = NSString(contentsOfFile: htmlWrapperPath!, encoding: NSUTF8StringEncoding, error: nil)
         let htmlContent = NSString(format: htmlWrapper!, article.title, article.title, article.content) as String
-        println(htmlContent)
         webView.loadHTMLString(htmlContent, baseURL: article.link)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action,

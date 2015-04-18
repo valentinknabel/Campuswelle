@@ -29,6 +29,8 @@
 		DA759DCB1AE2E21500746678 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA759DCA1AE2E21500746678 /* WebKit.framework */; };
 		DA759DCE1AE2E2ED00746678 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DCD1AE2E2ED00746678 /* ArticleViewController.swift */; };
 		DA759DD11AE2ED9A00746678 /* wrapper.html in Resources */ = {isa = PBXBuildFile; fileRef = DA759DD01AE2ED9A00746678 /* wrapper.html */; };
+		DA759DD41AE2F72500746678 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA759DD31AE2F72500746678 /* AVKit.framework */; };
+		DA759DD61AE2F7E200746678 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DD51AE2F7E200746678 /* PodcastViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		DA759DCA1AE2E21500746678 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		DA759DCD1AE2E2ED00746678 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		DA759DD01AE2ED9A00746678 /* wrapper.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = wrapper.html; sourceTree = "<group>"; };
+		DA759DD31AE2F72500746678 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		DA759DD51AE2F7E200746678 /* PodcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
 		DC97D1657C8855F63D8C7C61 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA759DD41AE2F72500746678 /* AVKit.framework in Frameworks */,
 				DA759DCB1AE2E21500746678 /* WebKit.framework in Frameworks */,
 				ABCE9E8CE382E6EB3055632C /* libPods.a in Frameworks */,
 			);
@@ -96,6 +101,7 @@
 		AE5C1C0A33F173384347B134 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DA759DD31AE2F72500746678 /* AVKit.framework */,
 				DA759DCA1AE2E21500746678 /* WebKit.framework */,
 				282FCF13BD47C1A26E91BC98 /* libPods.a */,
 			);
@@ -148,7 +154,7 @@
 				DA6E8DAE1ADFFF1C0075525C /* album-data.swift */,
 				DA759DCF1AE2ED7000746678 /* HTML */,
 				DA759DCC1AE2E2CF00746678 /* News */,
-				DA6E8DA41ADFFEBF0075525C /* PodcastTableViewController.swift */,
+				DA759DD21AE2F46300746678 /* Podcast */,
 				DA6E8DA61ADFFED10075525C /* AlbumCollectionViewController.swift */,
 				DA5AD6D01ADFF70E00C740E6 /* Main.storyboard */,
 				DA5AD6D31ADFF70E00C740E6 /* Images.xcassets */,
@@ -198,6 +204,15 @@
 				DA759DD01AE2ED9A00746678 /* wrapper.html */,
 			);
 			name = HTML;
+			sourceTree = "<group>";
+		};
+		DA759DD21AE2F46300746678 /* Podcast */ = {
+			isa = PBXGroup;
+			children = (
+				DA6E8DA41ADFFEBF0075525C /* PodcastTableViewController.swift */,
+				DA759DD51AE2F7E200746678 /* PodcastViewController.swift */,
+			);
+			name = Podcast;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +364,7 @@
 				DA759DCE1AE2E2ED00746678 /* ArticleViewController.swift in Sources */,
 				DA6E8DAB1ADFFEFE0075525C /* podcast-data.swift in Sources */,
 				DA6E8DA51ADFFEBF0075525C /* PodcastTableViewController.swift in Sources */,
+				DA759DD61AE2F7E200746678 /* PodcastViewController.swift in Sources */,
 				DA6E8DBE1AE03A1E0075525C /* news-data.swift in Sources */,
 				DA6E8DBA1AE026ED0075525C /* Album.swift in Sources */,
 			);
