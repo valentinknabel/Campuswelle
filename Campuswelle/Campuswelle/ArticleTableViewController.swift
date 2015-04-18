@@ -10,6 +10,22 @@ import UIKit
 
 class ArticleTableViewController: UITableViewController {
 
+    var news: [News] = []
+    
+    func tryReload() {
+        fetchNews(success: { (n) -> () in
+            self.news = n
+            self.tableView.reloadData()
+            println("LOG: news reloaded")
+            
+            }) { (error) -> () in
+                println("LOG: \(error)")
+                delay(10) {
+                    self.tryReload()
+                }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +34,7 @@ class ArticleTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.tryReload()
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,24 +47,24 @@ class ArticleTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return news.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("articleCell", forIndexPath: indexPath) as! UITableViewCell
 
         // Configure the cell...
+        cell.textLabel?.text = news[indexPath.row].article.title
+        cell.detailTextLabel?.text = news[indexPath.row].article.desc
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -84,14 +101,15 @@ class ArticleTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        if let articleViewController = segue.destinationViewController as? ArticleViewController {
+            articleViewController.article = news[tableView.indexPathForSelectedRow()!.row].article
+        }
     }
-    */
 
 }
