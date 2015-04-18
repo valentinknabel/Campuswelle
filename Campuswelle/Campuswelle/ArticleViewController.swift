@@ -13,12 +13,29 @@ class ArticleViewController: UIViewController {
     var article: Article!
     @IBOutlet var webView: UIWebView!
     
+    func shareAction() {
+        let controller = UIActivityViewController(activityItems: [article.link],
+            applicationActivities: nil)
+        self.presentViewController(controller,
+            animated: true,
+            completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationItem.title = article.title
-        webView.loadHTMLString(article.content, baseURL: article.link)
+        //self.navigationItem.title = article.title
+        
+        let htmlWrapperPath = NSBundle.mainBundle().pathForResource("wrapper", ofType: "html")
+        let htmlWrapper = NSString(contentsOfFile: htmlWrapperPath!, encoding: NSUTF8StringEncoding, error: nil)
+        let htmlContent = NSString(format: htmlWrapper!, article.title, article.title, article.content) as String
+        println(htmlContent)
+        webView.loadHTMLString(htmlContent, baseURL: article.link)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action,
+            target: self,
+            action: Selector("shareAction"))
     }
 
     override func didReceiveMemoryWarning() {

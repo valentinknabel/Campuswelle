@@ -72,7 +72,7 @@
         <!--Article View Controller-->
         <scene sceneID="l5l-8Z-Xx1">
             <objects>
-                <viewController id="bVr-9o-Pz9" customClass="ArticleViewController" customModule="Campuswelle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="bVr-9o-Pz9" customClass="ArticleViewController" customModule="Campuswelle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dy1-cf-070"/>
                         <viewControllerLayoutGuide type="bottom" id="ETn-Y2-1jn"/>
@@ -81,7 +81,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pgo-Lb-9Yx">
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pgo-Lb-9Yx">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
@@ -130,6 +130,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="8Ej-TX-foe" kind="show" id="jGO-qo-c0g"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -142,6 +145,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3iK-ci-N7Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="772" y="88"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ydi-Rp-VJd">
+            <objects>
+                <viewController id="8Ej-TX-foe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qJK-uV-ziV"/>
+                        <viewControllerLayoutGuide type="bottom" id="fxH-0g-7ii"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RQU-CG-E5m">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yeH-1r-87P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="854"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="V1F-AD-QwY">

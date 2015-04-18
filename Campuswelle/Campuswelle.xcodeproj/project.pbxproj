@@ -28,6 +28,7 @@
 		DA759DC91AE2DC0000746678 /* additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DC81AE2DC0000746678 /* additions.swift */; };
 		DA759DCB1AE2E21500746678 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA759DCA1AE2E21500746678 /* WebKit.framework */; };
 		DA759DCE1AE2E2ED00746678 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DCD1AE2E2ED00746678 /* ArticleViewController.swift */; };
+		DA759DD11AE2ED9A00746678 /* wrapper.html in Resources */ = {isa = PBXBuildFile; fileRef = DA759DD01AE2ED9A00746678 /* wrapper.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		DA759DC81AE2DC0000746678 /* additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = additions.swift; sourceTree = "<group>"; };
 		DA759DCA1AE2E21500746678 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		DA759DCD1AE2E2ED00746678 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		DA759DD01AE2ED9A00746678 /* wrapper.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = wrapper.html; sourceTree = "<group>"; };
 		DC97D1657C8855F63D8C7C61 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +146,7 @@
 				DA6E8DAA1ADFFEFE0075525C /* podcast-data.swift */,
 				DA6E8DAC1ADFFF060075525C /* article-data.swift */,
 				DA6E8DAE1ADFFF1C0075525C /* album-data.swift */,
+				DA759DCF1AE2ED7000746678 /* HTML */,
 				DA759DCC1AE2E2CF00746678 /* News */,
 				DA6E8DA41ADFFEBF0075525C /* PodcastTableViewController.swift */,
 				DA6E8DA61ADFFED10075525C /* AlbumCollectionViewController.swift */,
@@ -187,6 +190,14 @@
 				DA759DCD1AE2E2ED00746678 /* ArticleViewController.swift */,
 			);
 			name = News;
+			sourceTree = "<group>";
+		};
+		DA759DCF1AE2ED7000746678 /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				DA759DD01AE2ED9A00746678 /* wrapper.html */,
+			);
+			name = HTML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA759DD11AE2ED9A00746678 /* wrapper.html in Resources */,
 				DA5AD6D21ADFF70E00C740E6 /* Main.storyboard in Resources */,
 				DA5AD6D71ADFF70E00C740E6 /* LaunchScreen.xib in Resources */,
 				DA5AD6ED1ADFF71A00C740E6 /* Cartfile in Resources */,
