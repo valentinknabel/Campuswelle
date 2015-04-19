@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -131,7 +132,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="HPs-8K-zpA" kind="show" id="45y-bN-gwb"/>
+                                    <segue destination="woy-hL-3Sh" kind="show" id="S8u-5D-lNG"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -146,47 +147,88 @@
             </objects>
             <point key="canvasLocation" x="772" y="88"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="t9t-HL-xpj">
+        <!--Podcast View Controller-->
+        <scene sceneID="O1Y-O4-qaJ">
             <objects>
-                <tableViewController id="HPs-8K-zpA" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dlN-Uf-Gwd">
+                <viewController hidesBottomBarWhenPushed="YES" id="woy-hL-3Sh" customClass="PodcastViewController" customModule="Campuswelle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jlq-3U-QRr"/>
+                        <viewControllerLayoutGuide type="bottom" id="XGz-Ks-LPD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1Wu-rs-QRi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" minimumValueImage="ios7-volume-low" maximumValueImage="ios7-volume-high" translatesAutoresizingMaskIntoConstraints="NO" id="zmj-TB-VhY" customClass="MPVolumeView">
+                                <rect key="frame" x="14" y="491" width="572" height="31"/>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cnw-Yx-mZU" userLabel="Play">
+                                <rect key="frame" x="285" y="453" width="30" height="30"/>
+                                <state key="normal" image="ios7-play">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="togglePodcast" destination="woy-hL-3Sh" eventType="touchUpInside" id="hmZ-CO-e2i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfg-ga-cmG" userLabel="Rewind">
+                                <rect key="frame" x="195" y="453" width="30" height="30"/>
+                                <state key="normal" image="ios7-rewind">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxi-d6-QzX" userLabel="Forward">
+                                <rect key="frame" x="375" y="453" width="30" height="30"/>
+                                <state key="normal" image="ios7-fastforward">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FTp-od-n5Q">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="445"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XN4-zO-nNz" userLabel="Pause">
+                                <rect key="frame" x="285" y="453" width="30" height="30"/>
+                                <state key="normal" image="ios7-pause">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="togglePodcast" destination="woy-hL-3Sh" eventType="touchUpInside" id="aFg-eA-TeI"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <sections>
-                            <tableViewSection id="abr-Ed-izO">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Z4R-Zp-0I0">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z4R-Zp-0I0" id="hpP-tS-n1O">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1KT-t8-EyG">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1KT-t8-EyG" id="T7V-zN-MUS">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vpM-R7-sLo">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vpM-R7-sLo" id="IOJ-YU-8gp">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="HPs-8K-zpA" id="uga-2J-Arl"/>
-                            <outlet property="delegate" destination="HPs-8K-zpA" id="9Rf-bd-ibb"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7Fx-EC-wAX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="FTp-od-n5Q" firstAttribute="top" secondItem="jlq-3U-QRr" secondAttribute="bottom" constant="-64" id="046-Pz-qQf"/>
+                            <constraint firstItem="zmj-TB-VhY" firstAttribute="leading" secondItem="1Wu-rs-QRi" secondAttribute="leadingMargin" id="0Da-bZ-Xps"/>
+                            <constraint firstAttribute="centerX" secondItem="Cnw-Yx-mZU" secondAttribute="centerX" id="1Du-fA-1fj"/>
+                            <constraint firstItem="XN4-zO-nNz" firstAttribute="centerY" secondItem="Cnw-Yx-mZU" secondAttribute="centerY" id="1fN-dm-5kV"/>
+                            <constraint firstItem="XN4-zO-nNz" firstAttribute="centerX" secondItem="Cnw-Yx-mZU" secondAttribute="centerX" id="CFa-cI-LII"/>
+                            <constraint firstItem="XN4-zO-nNz" firstAttribute="top" secondItem="Cnw-Yx-mZU" secondAttribute="bottom" constant="-30" id="DZW-gE-EhF"/>
+                            <constraint firstItem="FTp-od-n5Q" firstAttribute="leading" secondItem="1Wu-rs-QRi" secondAttribute="leadingMargin" constant="-16" id="GhW-2y-s92"/>
+                            <constraint firstItem="Cnw-Yx-mZU" firstAttribute="top" secondItem="FTp-od-n5Q" secondAttribute="bottom" constant="8" id="JzU-N2-jdE"/>
+                            <constraint firstItem="zmj-TB-VhY" firstAttribute="top" secondItem="Cnw-Yx-mZU" secondAttribute="bottom" constant="8" id="LNb-gE-zE0"/>
+                            <constraint firstItem="zmj-TB-VhY" firstAttribute="trailing" secondItem="1Wu-rs-QRi" secondAttribute="trailingMargin" id="QVu-jq-6QM"/>
+                            <constraint firstItem="tfg-ga-cmG" firstAttribute="centerY" secondItem="Cnw-Yx-mZU" secondAttribute="centerY" id="YX3-Vj-gcc"/>
+                            <constraint firstItem="XGz-Ks-LPD" firstAttribute="top" secondItem="zmj-TB-VhY" secondAttribute="bottom" constant="30" id="cG7-tJ-M7U"/>
+                            <constraint firstItem="XN4-zO-nNz" firstAttribute="leading" secondItem="Cnw-Yx-mZU" secondAttribute="trailing" constant="-30" id="g3b-D7-oSZ"/>
+                            <constraint firstItem="Cnw-Yx-mZU" firstAttribute="leading" secondItem="tfg-ga-cmG" secondAttribute="trailing" constant="60" id="hFa-jj-0xx"/>
+                            <constraint firstItem="Cnw-Yx-mZU" firstAttribute="centerY" secondItem="hxi-d6-QzX" secondAttribute="centerY" id="iCB-rD-qm7"/>
+                            <constraint firstItem="XN4-zO-nNz" firstAttribute="height" secondItem="Cnw-Yx-mZU" secondAttribute="height" id="k5f-7j-rj6"/>
+                            <constraint firstItem="hxi-d6-QzX" firstAttribute="leading" secondItem="Cnw-Yx-mZU" secondAttribute="trailing" constant="60" id="mPt-cR-RVZ"/>
+                            <constraint firstItem="XN4-zO-nNz" firstAttribute="width" secondItem="Cnw-Yx-mZU" secondAttribute="width" id="myt-Sj-iLt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FTp-od-n5Q" secondAttribute="trailing" constant="-16" id="vr3-Pv-KSh"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="imageView" destination="FTp-od-n5Q" id="1VF-lj-cbo"/>
+                        <outlet property="pauseButton" destination="XN4-zO-nNz" id="7bP-UO-SAK"/>
+                        <outlet property="playButton" destination="Cnw-Yx-mZU" id="c6v-fh-sYd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OQ1-l1-ia2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="772" y="766"/>
+            <point key="canvasLocation" x="772" y="824"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="V1F-AD-QwY">
@@ -268,8 +310,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="images" width="512" height="512"/>
-        <image name="ios7-paper-outline" width="512" height="512"/>
-        <image name="mic-c" width="512" height="512"/>
+        <image name="images" width="25" height="25"/>
+        <image name="ios7-fastforward" width="30" height="30"/>
+        <image name="ios7-paper-outline" width="25" height="25"/>
+        <image name="ios7-pause" width="30" height="30"/>
+        <image name="ios7-play" width="30" height="30"/>
+        <image name="ios7-rewind" width="30" height="30"/>
+        <image name="ios7-volume-high" width="20" height="20"/>
+        <image name="ios7-volume-low" width="20" height="20"/>
+        <image name="mic-c" width="25" height="25"/>
     </resources>
 </document>

@@ -11,11 +11,31 @@ import UIKit
 class PodcastViewController: UIViewController {
 
     var podcast: Podcast!
+    @IBOutlet var playButton: UIButton!
+    @IBOutlet var pauseButton: UIButton!
+    @IBOutlet var imageView: UIImageView!
+    
+    @IBAction func togglePodcast() {
+        PodcastPlayer.sharedInstance.togglePlayback(self)
+        self.refreshButtons()
+    }
+    
+    func refreshButtons() {
+        if PodcastPlayer.sharedInstance.isPaused {
+            playButton.hidden = false
+            pauseButton.hidden = true
+        }
+        else {
+            playButton.hidden = true
+            pauseButton.hidden = false
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.refreshButtons()
     }
 
     override func didReceiveMemoryWarning() {
