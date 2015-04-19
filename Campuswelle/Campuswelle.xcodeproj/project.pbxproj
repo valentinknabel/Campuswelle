@@ -25,14 +25,15 @@
 		DA6E8DBA1AE026ED0075525C /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E8DB91AE026ED0075525C /* Album.swift */; };
 		DA6E8DBC1AE026FB0075525C /* AlbumElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E8DBB1AE026FB0075525C /* AlbumElement.swift */; };
 		DA6E8DBE1AE03A1E0075525C /* news-data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E8DBD1AE03A1E0075525C /* news-data.swift */; };
+		DA701D661AE3D73600A19244 /* common-vc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA701D651AE3D73600A19244 /* common-vc.swift */; };
+		DA701D681AE3DD6000A19244 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA701D671AE3DD6000A19244 /* PodcastViewController.swift */; };
+		DA701D6C1AE3E29500A19244 /* WebViewWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA701D6B1AE3E29500A19244 /* WebViewWrapperDelegate.swift */; };
 		DA759DC91AE2DC0000746678 /* additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DC81AE2DC0000746678 /* additions.swift */; };
 		DA759DCB1AE2E21500746678 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA759DCA1AE2E21500746678 /* WebKit.framework */; };
 		DA759DCE1AE2E2ED00746678 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DCD1AE2E2ED00746678 /* ArticleViewController.swift */; };
 		DA759DD11AE2ED9A00746678 /* wrapper.html in Resources */ = {isa = PBXBuildFile; fileRef = DA759DD01AE2ED9A00746678 /* wrapper.html */; };
-		DA759DD41AE2F72500746678 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA759DD31AE2F72500746678 /* AVKit.framework */; };
-		DA759DD61AE2F7E200746678 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DD51AE2F7E200746678 /* PodcastViewController.swift */; };
+		DA759DD61AE2F7E200746678 /* PlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DD51AE2F7E200746678 /* PlaybackViewController.swift */; };
 		DA759DD81AE3043D00746678 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA759DD71AE3043D00746678 /* AVFoundation.framework */; };
-		DA759DDA1AE32AC600746678 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA759DD91AE32AC600746678 /* AudioToolbox.framework */; };
 		DA759DDC1AE3308000746678 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA759DDB1AE3308000746678 /* MediaPlayer.framework */; };
 		DA759DDE1AE330AE00746678 /* PodcastPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DDD1AE330AE00746678 /* PodcastPlayer.swift */; };
 /* End PBXBuildFile section */
@@ -72,12 +73,15 @@
 		DA6E8DB91AE026ED0075525C /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		DA6E8DBB1AE026FB0075525C /* AlbumElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumElement.swift; sourceTree = "<group>"; };
 		DA6E8DBD1AE03A1E0075525C /* news-data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "news-data.swift"; sourceTree = "<group>"; };
+		DA701D651AE3D73600A19244 /* common-vc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "common-vc.swift"; sourceTree = "<group>"; };
+		DA701D671AE3DD6000A19244 /* PodcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
+		DA701D6B1AE3E29500A19244 /* WebViewWrapperDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewWrapperDelegate.swift; sourceTree = "<group>"; };
 		DA759DC81AE2DC0000746678 /* additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = additions.swift; sourceTree = "<group>"; };
 		DA759DCA1AE2E21500746678 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		DA759DCD1AE2E2ED00746678 /* ArticleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 		DA759DD01AE2ED9A00746678 /* wrapper.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = wrapper.html; sourceTree = "<group>"; };
 		DA759DD31AE2F72500746678 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
-		DA759DD51AE2F7E200746678 /* PodcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
+		DA759DD51AE2F7E200746678 /* PlaybackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackViewController.swift; sourceTree = "<group>"; };
 		DA759DD71AE3043D00746678 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DA759DD91AE32AC600746678 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DA759DDB1AE3308000746678 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -91,9 +95,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA759DDC1AE3308000746678 /* MediaPlayer.framework in Frameworks */,
-				DA759DDA1AE32AC600746678 /* AudioToolbox.framework in Frameworks */,
 				DA759DD81AE3043D00746678 /* AVFoundation.framework in Frameworks */,
-				DA759DD41AE2F72500746678 /* AVKit.framework in Frameworks */,
 				DA759DCB1AE2E21500746678 /* WebKit.framework in Frameworks */,
 				ABCE9E8CE382E6EB3055632C /* libPods.a in Frameworks */,
 			);
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				DA759DC81AE2DC0000746678 /* additions.swift */,
+				DA701D651AE3D73600A19244 /* common-vc.swift */,
 				DA6E8DB01AE000400075525C /* Campuswelle-Bridging-Header.h */,
 				DA759DDD1AE330AE00746678 /* PodcastPlayer.swift */,
 				DA5AD6CA1ADFF70E00C740E6 /* AppDelegate.swift */,
@@ -167,6 +170,7 @@
 				DA6E8DAA1ADFFEFE0075525C /* podcast-data.swift */,
 				DA6E8DAC1ADFFF060075525C /* article-data.swift */,
 				DA6E8DAE1ADFFF1C0075525C /* album-data.swift */,
+				DA701D6B1AE3E29500A19244 /* WebViewWrapperDelegate.swift */,
 				DA759DCF1AE2ED7000746678 /* HTML */,
 				DA759DCC1AE2E2CF00746678 /* News */,
 				DA759DD21AE2F46300746678 /* Podcast */,
@@ -225,7 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				DA6E8DA41ADFFEBF0075525C /* PodcastTableViewController.swift */,
-				DA759DD51AE2F7E200746678 /* PodcastViewController.swift */,
+				DA701D671AE3DD6000A19244 /* PodcastViewController.swift */,
+				DA759DD51AE2F7E200746678 /* PlaybackViewController.swift */,
 			);
 			name = Podcast;
 			sourceTree = "<group>";
@@ -375,17 +380,20 @@
 				DA6E8DBC1AE026FB0075525C /* AlbumElement.swift in Sources */,
 				DA6E8DA31ADFFEB20075525C /* ArticleTableViewController.swift in Sources */,
 				DA5AD6CB1ADFF70E00C740E6 /* AppDelegate.swift in Sources */,
+				DA701D661AE3D73600A19244 /* common-vc.swift in Sources */,
 				DA6E8DAD1ADFFF060075525C /* article-data.swift in Sources */,
 				DA6E8DA71ADFFED10075525C /* AlbumCollectionViewController.swift in Sources */,
 				DA6E8DB61AE026D10075525C /* Article.swift in Sources */,
 				DA759DC91AE2DC0000746678 /* additions.swift in Sources */,
+				DA701D6C1AE3E29500A19244 /* WebViewWrapperDelegate.swift in Sources */,
 				DA6E8DB81AE026DD0075525C /* Podcast.swift in Sources */,
+				DA701D681AE3DD6000A19244 /* PodcastViewController.swift in Sources */,
 				DA6E8DAF1ADFFF1C0075525C /* album-data.swift in Sources */,
 				DA759DDE1AE330AE00746678 /* PodcastPlayer.swift in Sources */,
 				DA759DCE1AE2E2ED00746678 /* ArticleViewController.swift in Sources */,
 				DA6E8DAB1ADFFEFE0075525C /* podcast-data.swift in Sources */,
 				DA6E8DA51ADFFEBF0075525C /* PodcastTableViewController.swift in Sources */,
-				DA759DD61AE2F7E200746678 /* PodcastViewController.swift in Sources */,
+				DA759DD61AE2F7E200746678 /* PlaybackViewController.swift in Sources */,
 				DA6E8DBE1AE03A1E0075525C /* news-data.swift in Sources */,
 				DA6E8DBA1AE026ED0075525C /* Album.swift in Sources */,
 			);

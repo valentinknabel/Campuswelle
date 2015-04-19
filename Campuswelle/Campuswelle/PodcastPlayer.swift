@@ -8,7 +8,6 @@
 
 import Foundation
 import AVFoundation
-import AudioToolbox
 import MediaPlayer
 
 private class Queue<T> {
@@ -31,29 +30,41 @@ private class Queue<T> {
     }
 }
 
-class PodcastPlayer: NSObject, AVAudioPlayerDelegate {
+@objc class PodcastPlayer: NSObject, AVAudioPlayerDelegate {
     
     private static var _sharedInstance: PodcastPlayer?
     static var sharedInstance: PodcastPlayer {
         return _sharedInstance ?? PodcastPlayer()
     }
     
-    private let audioPlayer: AVAudioPlayer
+    private var audioPlayer: AVAudioPlayer?
     private var podcastQueue: Queue<Podcast>?
     
-    var isPaused: Bool {
-        return !audioPlayer.playing
+    enum Status {
+        case Paused
+        case Playing
+        case Empty
+    }
+    var status: Status = .Empty {
+        willSet {
+            switch newValue {
+            case .Empty:
+                audioPlayer = nil
+            default:
+                break
+            }
+        }
     }
     
     private override init() {
-        audioPlayer = AVAudioPlayer()
         
         super.init()
         PodcastPlayer._sharedInstance = self
-        audioPlayer.delegate = self
+        
+        prepare()
     }
     
-    func prepare() {
+    private func prepare() {
         // Set AudioSession
         var setCategoryError: NSError?
         if !AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback,
@@ -65,17 +76,24 @@ class PodcastPlayer: NSObject, AVAudioPlayerDelegate {
     }
     
     func togglePlayback(sender: UIResponder) {
-        (!audioPlayer.playing ? play : pause)(sender)
+        switch self.status {
+        case .Paused:
+            play(sender)
+        case .Playing:
+            pause(sender)
+        case .Empty:
+            break
+        }
     }
     
     private func play(sender: UIResponder) {
-        self.audioPlayer.play()
+        self.audioPlayer?.play()
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         sender.becomeFirstResponder()
     }
     
     private func pause(sender: UIResponder) {
-        self.audioPlayer.play()
+        self.audioPlayer?.play()
         UIApplication.sharedApplication().endReceivingRemoteControlEvents()
     }
     
@@ -83,27 +101,37 @@ class PodcastPlayer: NSObject, AVAudioPlayerDelegate {
         let old = podcastQueue
         podcastQueue = old?.next
         
+        if podcastQueue == nil {
+            status = .Empty
+        }
         refreshInfoCenter()
     }
     
     private func refreshInfoCenter() {
-        if let next = podcastQueue?.value {
+        switch (podcastQueue, status) {
+        case (_, .Empty):
+            break
+        case let (.Some(next), _):
             let currentlyPlayingTrackInfo = [MPMediaItemPropertyArtist: "Campuswelle",
-                MPMediaItemPropertyTitle: next.article.title]
+                MPMediaItemPropertyTitle: next.value.article.title]
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
+        default:
+            println("PodcastPlayer inconsistent")
         }
     }
     
     func append(podcast: Podcast) {
-        if podcastQueue == nil {
+        switch (podcastQueue, status) {
+        case (_, .Empty):
             podcastQueue = Queue(value: podcast)
-        }
-        else {
-            podcastQueue!.append(podcast)
+        case let (.Some(queue), _):
+            queue.append(podcast)
+        default:
+            println("PodcastPlayer inconsistent")
         }
     }
     
-    func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
+    @objc func audioPlayerDidFinishPlaying(player: AVAudioPlayer!, successfully flag: Bool) {
         if flag {
             next()
         }

@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ArticleViewController: UIViewController {
+class ArticleViewController: UIViewController, UIWebViewDelegate {
     
     var article: Article!
     @IBOutlet var webView: UIWebView!
+    var contentWrapper = WebViewWrapperDelegate()
     
     func shareAction() {
         let controller = UIActivityViewController(activityItems: [article.link],
@@ -27,10 +28,8 @@ class ArticleViewController: UIViewController {
         // Do any additional setup after loading the view.
         //self.navigationItem.title = article.title
         
-        let htmlWrapperPath = NSBundle.mainBundle().pathForResource("wrapper", ofType: "html")
-        let htmlWrapper = NSString(contentsOfFile: htmlWrapperPath!, encoding: NSUTF8StringEncoding, error: nil)
-        let htmlContent = NSString(format: htmlWrapper!, article.title, article.title, article.content) as String
-        webView.loadHTMLString(htmlContent, baseURL: article.link)
+        contentWrapper.webView = webView
+        contentWrapper.setContent(article: article)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action,
             target: self,
