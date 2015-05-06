@@ -21,7 +21,9 @@ class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
     }
     
     func setContent(#article: Article) {
-        webView.loadHTMLString(prepareHTML(article), baseURL: article.link)
+        let content = prepareHTML(article)
+        webView.loadHTMLString(content, baseURL: article.link)
+        println(content)
     }
     
     private func embedHTML(article: Article) -> String {
