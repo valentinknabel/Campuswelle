@@ -79,7 +79,8 @@ import MediaPlayer
     }
     
     private func refreshInfoCenter() {
-        switch (podcastQueue, status) {
+        // TODO: implement
+        /*switch (podcastQueue, status) {
         case (_, .Empty):
             break
         case let (.Some(next), _):
@@ -88,7 +89,7 @@ import MediaPlayer
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
         default:
             println("PodcastPlayer inconsistent")
-        }
+        }*/
     }
     
     func append(podcast: Podcast, sender: UIResponder) {
