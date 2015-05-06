@@ -1,3 +1,4 @@
 #github "typelift/Swiftz"
 #github "Bitnock/BNRSSFeedParser"
 github "Alamofire/Alamofire"
+github "topfunky/hpple"

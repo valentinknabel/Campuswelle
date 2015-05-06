@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		ABCE9E8CE382E6EB3055632C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FCF13BD47C1A26E91BC98 /* libPods.a */; };
+		DA34AF5A1AFA3E0C0064B45E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA34AF591AFA3E0C0064B45E /* libxml2.2.dylib */; };
+		DA34AF631AFA3F0B0064B45E /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = DA34AF5B1AFA3F0B0064B45E /* XPathQuery.m */; };
+		DA34AF641AFA3F0B0064B45E /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = DA34AF5F1AFA3F0B0064B45E /* TFHpple.m */; };
+		DA34AF651AFA3F0B0064B45E /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA34AF611AFA3F0B0064B45E /* TFHppleElement.m */; };
 		DA5AD6CB1ADFF70E00C740E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5AD6CA1ADFF70E00C740E6 /* AppDelegate.swift */; };
 		DA5AD6D21ADFF70E00C740E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA5AD6D01ADFF70E00C740E6 /* Main.storyboard */; };
 		DA5AD6D41ADFF70E00C740E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5AD6D31ADFF70E00C740E6 /* Images.xcassets */; };
@@ -51,6 +55,14 @@
 /* Begin PBXFileReference section */
 		282FCF13BD47C1A26E91BC98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C286C656F7E7666AB413866E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DA34AF591AFA3E0C0064B45E /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		DA34AF5B1AFA3F0B0064B45E /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
+		DA34AF5C1AFA3F0B0064B45E /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
+		DA34AF5E1AFA3F0B0064B45E /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHpple.h; sourceTree = "<group>"; };
+		DA34AF5F1AFA3F0B0064B45E /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHpple.m; sourceTree = "<group>"; };
+		DA34AF601AFA3F0B0064B45E /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFHppleElement.h; sourceTree = "<group>"; };
+		DA34AF611AFA3F0B0064B45E /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
+		DA34AF661AFA3F4F0064B45E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		DA5AD6C51ADFF70E00C740E6 /* Campuswelle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Campuswelle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5AD6C91ADFF70E00C740E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA5AD6CA1ADFF70E00C740E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA34AF5A1AFA3E0C0064B45E /* libxml2.2.dylib in Frameworks */,
 				DA759DDC1AE3308000746678 /* MediaPlayer.framework in Frameworks */,
 				DA759DD81AE3043D00746678 /* AVFoundation.framework in Frameworks */,
 				DA759DCB1AE2E21500746678 /* WebKit.framework in Frameworks */,
@@ -114,6 +127,7 @@
 		AE5C1C0A33F173384347B134 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DA34AF591AFA3E0C0064B45E /* libxml2.2.dylib */,
 				DA759DDB1AE3308000746678 /* MediaPlayer.framework */,
 				DA759DD91AE32AC600746678 /* AudioToolbox.framework */,
 				DA759DD71AE3043D00746678 /* AVFoundation.framework */,
@@ -133,9 +147,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DA34AF5D1AFA3F0B0064B45E /* XPath */ = {
+			isa = PBXGroup;
+			children = (
+				DA34AF5B1AFA3F0B0064B45E /* XPathQuery.m */,
+				DA34AF5C1AFA3F0B0064B45E /* XPathQuery.h */,
+			);
+			name = XPath;
+			sourceTree = "<group>";
+		};
+		DA34AF621AFA3F0B0064B45E /* Hpple */ = {
+			isa = PBXGroup;
+			children = (
+				DA34AF5D1AFA3F0B0064B45E /* XPath */,
+				DA34AF5E1AFA3F0B0064B45E /* TFHpple.h */,
+				DA34AF5F1AFA3F0B0064B45E /* TFHpple.m */,
+				DA34AF601AFA3F0B0064B45E /* TFHppleElement.h */,
+				DA34AF611AFA3F0B0064B45E /* TFHppleElement.m */,
+			);
+			name = Hpple;
+			path = ../carthage/checkouts/hpple;
+			sourceTree = "<group>";
+		};
 		DA5AD6BC1ADFF70E00C740E6 = {
 			isa = PBXGroup;
 			children = (
+				DA34AF661AFA3F4F0064B45E /* PrefixHeader.pch */,
+				DA34AF621AFA3F0B0064B45E /* Hpple */,
 				DA5AD6EC1ADFF71A00C740E6 /* Cartfile */,
 				DA5AD6C71ADFF70E00C740E6 /* Campuswelle */,
 				DA5AD6DF1ADFF70E00C740E6 /* CampuswelleTests */,
@@ -387,6 +425,7 @@
 			files = (
 				DA6E8DBC1AE026FB0075525C /* AlbumElement.swift in Sources */,
 				DA6E8DA31ADFFEB20075525C /* ArticleTableViewController.swift in Sources */,
+				DA34AF631AFA3F0B0064B45E /* XPathQuery.m in Sources */,
 				DA5AD6CB1ADFF70E00C740E6 /* AppDelegate.swift in Sources */,
 				DA701D661AE3D73600A19244 /* common-vc.swift in Sources */,
 				DA6E8DAD1ADFFF060075525C /* article-data.swift in Sources */,
@@ -394,6 +433,8 @@
 				DA6E8DB61AE026D10075525C /* Article.swift in Sources */,
 				DA759DC91AE2DC0000746678 /* additions.swift in Sources */,
 				DA701D6C1AE3E29500A19244 /* WebViewWrapperDelegate.swift in Sources */,
+				DA34AF651AFA3F0B0064B45E /* TFHppleElement.m in Sources */,
+				DA34AF641AFA3F0B0064B45E /* TFHpple.m in Sources */,
 				DA6E8DB81AE026DD0075525C /* Podcast.swift in Sources */,
 				DA701D681AE3DD6000A19244 /* PodcastViewController.swift in Sources */,
 				DA6E8DAF1ADFFF1C0075525C /* album-data.swift in Sources */,
@@ -532,11 +573,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/BNRSSFeedParser\"",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = Campuswelle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Campuswelle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -546,10 +596,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/BNRSSFeedParser\"",
+					"$(SDKROOT)/usr/include/libxml2",
+				);
 				INFOPLIST_FILE = Campuswelle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Campuswelle-Bridging-Header.h";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};

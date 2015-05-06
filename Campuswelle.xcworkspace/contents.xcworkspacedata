@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:carthage/checkouts/hpple/Hpple.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Campuswelle/Campuswelle.xcodeproj">
    </FileRef>
    <FileRef
