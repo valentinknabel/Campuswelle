@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		ABCE9E8CE382E6EB3055632C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FCF13BD47C1A26E91BC98 /* libPods.a */; };
+		DA1E7A721B0CD29B00263026 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A711B0CD29B00263026 /* NewsTableViewController.swift */; };
+		DA1E7A741B0CD3B500263026 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A731B0CD3B500263026 /* NewsViewController.swift */; };
+		DA1E7A761B0CE58500263026 /* structural-fold-phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A751B0CE58500263026 /* structural-fold-phase.swift */; };
+		DA1E7A791B0CE5AA00263026 /* semantic-fold-phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A781B0CE5AA00263026 /* semantic-fold-phase.swift */; };
+		DA1E7A7B1B0CE5C400263026 /* news-fold.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A7A1B0CE5C400263026 /* news-fold.swift */; };
 		DA34AF5A1AFA3E0C0064B45E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA34AF591AFA3E0C0064B45E /* libxml2.2.dylib */; };
 		DA34AF631AFA3F0B0064B45E /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = DA34AF5B1AFA3F0B0064B45E /* XPathQuery.m */; };
 		DA34AF641AFA3F0B0064B45E /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = DA34AF5F1AFA3F0B0064B45E /* TFHpple.m */; };
@@ -56,6 +61,11 @@
 /* Begin PBXFileReference section */
 		282FCF13BD47C1A26E91BC98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C286C656F7E7666AB413866E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DA1E7A711B0CD29B00263026 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		DA1E7A731B0CD3B500263026 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		DA1E7A751B0CE58500263026 /* structural-fold-phase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "structural-fold-phase.swift"; sourceTree = "<group>"; };
+		DA1E7A781B0CE5AA00263026 /* semantic-fold-phase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "semantic-fold-phase.swift"; sourceTree = "<group>"; };
+		DA1E7A7A1B0CE5C400263026 /* news-fold.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "news-fold.swift"; sourceTree = "<group>"; };
 		DA34AF591AFA3E0C0064B45E /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		DA34AF5B1AFA3F0B0064B45E /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPathQuery.m; sourceTree = "<group>"; };
 		DA34AF5C1AFA3F0B0064B45E /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPathQuery.h; sourceTree = "<group>"; };
@@ -149,6 +159,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DA1E7A771B0CE58C00263026 /* fold-phases */ = {
+			isa = PBXGroup;
+			children = (
+				DA1E7A751B0CE58500263026 /* structural-fold-phase.swift */,
+				DA1E7A781B0CE5AA00263026 /* semantic-fold-phase.swift */,
+				DA1E7A7A1B0CE5C400263026 /* news-fold.swift */,
+			);
+			name = "fold-phases";
+			sourceTree = "<group>";
+		};
 		DA34AF5D1AFA3F0B0064B45E /* XPath */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +230,7 @@
 				DA6E8DAA1ADFFEFE0075525C /* podcast-data.swift */,
 				DA6E8DAC1ADFFF060075525C /* article-data.swift */,
 				DA6E8DAE1ADFFF1C0075525C /* album-data.swift */,
+				DA1E7A771B0CE58C00263026 /* fold-phases */,
 				DA759DCF1AE2ED7000746678 /* HTML */,
 				DA759DCC1AE2E2CF00746678 /* News */,
 				DA759DD21AE2F46300746678 /* Podcast */,
@@ -260,6 +281,8 @@
 			children = (
 				DA6E8DA21ADFFEB20075525C /* ArticleTableViewController.swift */,
 				DA759DCD1AE2E2ED00746678 /* ArticleViewController.swift */,
+				DA1E7A731B0CD3B500263026 /* NewsViewController.swift */,
+				DA1E7A711B0CD29B00263026 /* NewsTableViewController.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -429,11 +452,13 @@
 				DA6E8DBC1AE026FB0075525C /* AlbumElement.swift in Sources */,
 				DA6E8DA31ADFFEB20075525C /* ArticleTableViewController.swift in Sources */,
 				DA34AF631AFA3F0B0064B45E /* XPathQuery.m in Sources */,
+				DA1E7A741B0CD3B500263026 /* NewsViewController.swift in Sources */,
 				DA5AD6CB1ADFF70E00C740E6 /* AppDelegate.swift in Sources */,
 				DA701D661AE3D73600A19244 /* common-vc.swift in Sources */,
 				DA6E8DAD1ADFFF060075525C /* article-data.swift in Sources */,
 				DA6E8DA71ADFFED10075525C /* AlbumCollectionViewController.swift in Sources */,
 				DA6E8DB61AE026D10075525C /* Article.swift in Sources */,
+				DA1E7A7B1B0CE5C400263026 /* news-fold.swift in Sources */,
 				DA759DC91AE2DC0000746678 /* additions.swift in Sources */,
 				DA701D6C1AE3E29500A19244 /* WebViewWrapperDelegate.swift in Sources */,
 				DA34AF681AFA444E0064B45E /* news-html.swift in Sources */,
@@ -443,12 +468,15 @@
 				DA701D681AE3DD6000A19244 /* PodcastViewController.swift in Sources */,
 				DA6E8DAF1ADFFF1C0075525C /* album-data.swift in Sources */,
 				DA759DDE1AE330AE00746678 /* PodcastPlayer.swift in Sources */,
+				DA1E7A791B0CE5AA00263026 /* semantic-fold-phase.swift in Sources */,
 				DA759DCE1AE2E2ED00746678 /* ArticleViewController.swift in Sources */,
 				DA6E8DAB1ADFFEFE0075525C /* podcast-data.swift in Sources */,
 				DA6E8DA51ADFFEBF0075525C /* PodcastTableViewController.swift in Sources */,
+				DA1E7A721B0CD29B00263026 /* NewsTableViewController.swift in Sources */,
 				DA759DD61AE2F7E200746678 /* PlaybackViewController.swift in Sources */,
 				DA6E8DBE1AE03A1E0075525C /* news-data.swift in Sources */,
 				DA6E8DBA1AE026ED0075525C /* Album.swift in Sources */,
+				DA1E7A761B0CE58500263026 /* structural-fold-phase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

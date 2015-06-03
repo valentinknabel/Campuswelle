@@ -13,11 +13,23 @@ func toArticles(feed: BNRSSFeed) -> [Article] {
 }
 
 func toArticle(item: BNRSSFeedItem) -> Article {
+    let content = item["content:encoded"] as? String ?? ""
+    let doc = contentHtmlMapper(content)
+    let images = htmlImageMapper(doc)
+    let videos = htmlVideoMapper(doc)
+    
+    removeImages(doc)
+    removeVideos(doc)
+    let data = doc.data
+    let fixedContent = NSString(data: data, encoding: NSUTF8StringEncoding)! as String
+    
     return Article(title: item.title,
         link: item.link,
         desc: item.description,
         categories: item.categories as! [String],
-        content: item["content:encoded"] as? String ?? ""
+        content: fixedContent,
+        imageUrls: images,
+        videoUrls: videos
     )
 }
 

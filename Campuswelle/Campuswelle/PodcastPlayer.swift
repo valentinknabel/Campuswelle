@@ -11,6 +11,10 @@ import AVFoundation
 import MediaPlayer
 
 
+private func toItem(podcast: Podcast) -> AVPlayerItem {
+    return AVPlayerItem(URL: podcast.enclosure)
+}
+
 // TODO: Save [AVPlayerItem:Podcast] for displaying info, Set<Podcast> because we dont want to repeat one podcast
 
 @objc class PodcastPlayer: NSObject {
@@ -65,6 +69,7 @@ import MediaPlayer
         status = .Playing
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         sender.becomeFirstResponder()
+        self.refreshInfoCenter()
     }
     
     private func pause(sender: UIResponder) {
@@ -93,7 +98,8 @@ import MediaPlayer
     }
     
     func append(podcast: Podcast, sender: UIResponder) {
-        
+        self.player.insertItem(toItem(podcast), afterItem: nil)
+        self.play(sender)
     }
     
 }

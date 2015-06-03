@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         PodcastPlayer.sharedInstance
         
+        UITabBar.appearance().tintColor = UIColor(red: 204/255.0, green: 51/255.0, blue: 0.0, alpha: 1.0)
+        
         return true
     }
 

@@ -20,21 +20,21 @@ class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
         super.init()
     }
     
-    func setContent(#article: Article) {
-        let content = prepareHTML(article)
-        webView.loadHTMLString(content, baseURL: article.link)
+    func setContent(#news: News) {
+        let content = prepareHTML(news)
+        webView.loadHTMLString(content, baseURL: news.article.link)
         println(content)
     }
     
-    private func embedHTML(article: Article) -> String {
+    private func embedHTML(news: News) -> String {
         let htmlWrapperPath = NSBundle.mainBundle().pathForResource("wrapper", ofType: "html")
         let htmlWrapper = NSString(contentsOfFile: htmlWrapperPath!, encoding: NSUTF8StringEncoding, error: nil)
-        let htmlContent = NSString(format: htmlWrapper!, article.title, article.title, article.content) as String
+        let htmlContent = NSString(format: htmlWrapper!, news.article.title, news.article.title, news.article.content) as String
         return htmlContent
     }
     
-    private func prepareHTML(article: Article) -> String {
-        return embedHTML(article)
+    private func prepareHTML(news: News) -> String {
+        return embedHTML(news)
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {

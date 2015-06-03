@@ -23,7 +23,7 @@ class PodcastViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         contentWrapper.webView = webView
-        contentWrapper.setContent(article: podcast.article)
+        contentWrapper.setContent(news: podcast.article)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add,
             target: self,

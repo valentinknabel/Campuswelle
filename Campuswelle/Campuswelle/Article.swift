@@ -24,6 +24,9 @@ struct Article: News, Printable {
     let categories: [String]
     let content: String
     
+    let imageUrls: [NSURL]
+    let videoUrls: [NSURL]
+    
     var description: String {
         return "A: \(title)"
     }

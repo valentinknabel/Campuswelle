@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yMS-In-MLV">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -15,6 +15,7 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="d1z-VJ-Dfs" kind="relationship" relationship="viewControllers" id="BuP-7G-vhX"/>
@@ -309,6 +310,73 @@
             </objects>
             <point key="canvasLocation" x="1788" y="-728"/>
         </scene>
+        <!--News-->
+        <scene sceneID="nFw-bp-TgC">
+            <objects>
+                <tableViewController title="News" id="kj7-i4-Kfx" customClass="NewsTableViewController" customModule="Campuswelle" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CDN-F0-oHp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" textLabel="r1e-J8-4ev" detailTextLabel="qPT-Mk-b1e" imageView="1qE-5v-Hhx" style="IBUITableViewCellStyleSubtitle" id="UuJ-Ht-g1s">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UuJ-Ht-g1s" id="VK1-er-BJN">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Article" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r1e-J8-4ev">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qPT-Mk-b1e">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="images" id="1qE-5v-Hhx">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Iuv-yX-ivf" kind="show" id="dus-k5-xyW"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kj7-i4-Kfx" id="AAG-mx-8eX"/>
+                            <outlet property="delegate" destination="kj7-i4-Kfx" id="rLc-5C-fh4"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Campuswelle" id="TPv-W5-fWM"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bc2-cI-lpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2674" y="-553"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3Wd-xh-ajG">
+            <objects>
+                <navigationController toolbarHidden="NO" id="yMS-In-MLV" sceneMemberID="viewController">
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Cg-R1-rqE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="jAv-D1-bhb">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="kj7-i4-Kfx" kind="relationship" relationship="rootViewController" id="TfQ-1t-wsT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Vk-IR-YIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2674" y="-1332"/>
+        </scene>
         <!--Podcasts-->
         <scene sceneID="TrO-Fb-nts">
             <objects>
@@ -343,6 +411,39 @@
             </objects>
             <point key="canvasLocation" x="-244" y="-728"/>
         </scene>
+        <!--News View Controller-->
+        <scene sceneID="JNG-21-Uxb">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="Iuv-yX-ivf" customClass="NewsViewController" customModule="Campuswelle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q1F-Bk-d9n"/>
+                        <viewControllerLayoutGuide type="bottom" id="gX8-B4-kBe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LyQ-Pe-qQo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c1p-15-Ipz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c1p-15-Ipz" firstAttribute="width" secondItem="LyQ-Pe-qQo" secondAttribute="width" id="PuP-w3-FQ8"/>
+                            <constraint firstItem="c1p-15-Ipz" firstAttribute="height" secondItem="LyQ-Pe-qQo" secondAttribute="height" id="X4k-s5-RJv"/>
+                            <constraint firstAttribute="centerX" secondItem="c1p-15-Ipz" secondAttribute="centerX" id="XEk-cZ-LEq"/>
+                            <constraint firstAttribute="centerY" secondItem="c1p-15-Ipz" secondAttribute="centerY" id="sr9-Y3-BnS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="c1p-15-Ipz" id="Fjj-Eb-HeW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1vQ-sw-cX0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2674" y="187"/>
+        </scene>
     </scenes>
     <resources>
         <image name="images" width="25" height="25"/>
@@ -355,4 +456,5 @@
         <image name="ios7-volume-low" width="20" height="20"/>
         <image name="mic-c" width="25" height="25"/>
     </resources>
+    <color key="tintColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -1,21 +1,21 @@
 //
-//  ArticleViewController.swift
+//  NewsViewController.swift
 //  Campuswelle
 //
-//  Created by Valentin Knabel on 2015-04-18.
+//  Created by Valentin Knabel on 20.05.15.
 //  Copyright (c) 2015 Valentin Knabel. All rights reserved.
 //
 
 import UIKit
 
-class ArticleViewController: UIViewController, UIWebViewDelegate {
+class NewsViewController: UIViewController {
     
-    var article: Article!
+    var news: News!
     @IBOutlet var webView: UIWebView!
     var contentWrapper = WebViewWrapperDelegate()
     
     func shareAction() {
-        let controller = UIActivityViewController(activityItems: [article.link],
+        let controller = UIActivityViewController(activityItems: [news.article.link],
             applicationActivities: nil)
         self.presentViewController(controller,
             animated: true,
@@ -24,23 +24,22 @@ class ArticleViewController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         //self.navigationItem.title = article.title
         
         contentWrapper.webView = webView
-        contentWrapper.setContent(news: article)
+        contentWrapper.setContent(news: news)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action,
             target: self,
             action: Selector("shareAction"))
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

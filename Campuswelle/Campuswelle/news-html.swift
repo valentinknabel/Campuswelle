@@ -34,3 +34,10 @@ func htmlVideoMapper(document: TFHpple) -> [NSURL] {
     return result
 }
 
+func removeImages(document: TFHpple) {
+    
+}
+
+func removeVideos(document: TFHpple) {
+    
+}
