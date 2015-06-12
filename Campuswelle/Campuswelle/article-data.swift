@@ -9,7 +9,9 @@
 import Foundation
 
 func toArticles(feed: BNRSSFeed) -> [Article] {
-    return map(feed.items as! [BNRSSFeedItem], toArticle)
+    guard let items = feed.items as? [BNRSSFeedItem]
+        else { fatalError("items of BNRSSFeed must be of type BNRSSFeedItem") }
+    return items.map(toArticle)
 }
 
 func toArticle(item: BNRSSFeedItem) -> Article {

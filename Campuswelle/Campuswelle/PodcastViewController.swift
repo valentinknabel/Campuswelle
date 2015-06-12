@@ -25,9 +25,14 @@ class PodcastViewController: UIViewController {
         contentWrapper.webView = webView
         contentWrapper.setContent(news: podcast.article)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add,
-            target: self,
-            action: Selector("addPodcast"))
+        self.navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Play,
+                target: self,
+                action: Selector("startPlay")),
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add,
+                target: self,
+                action: Selector("addPodcast"))
+        ]
     }
     
     override func didReceiveMemoryWarning() {

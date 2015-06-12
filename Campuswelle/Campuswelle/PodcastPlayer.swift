@@ -24,7 +24,7 @@ private func toItem(podcast: Podcast) -> AVPlayerItem {
         return _sharedInstance ?? PodcastPlayer()
     }
     
-    private let player: AVQueuePlayer = AVQueuePlayer.queuePlayerWithItems([]) as! AVQueuePlayer
+    private let player: AVQueuePlayer = AVQueuePlayer(items: []) as AVQueuePlayer
     
     enum Status {
         case Paused
@@ -43,12 +43,11 @@ private func toItem(podcast: Podcast) -> AVPlayerItem {
     
     private func prepare() {
         // Set AudioSession
-        var setCategoryError: NSError?
-        if !AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback,
-            withOptions: AVAudioSessionCategoryOptions.MixWithOthers,
-            error: &setCategoryError) {
-                // handle error
-                println(setCategoryError)
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: .MixWithOthers)
+        }
+        catch {
+            print(error)
         }
     }
     

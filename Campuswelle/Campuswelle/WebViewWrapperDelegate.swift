@@ -20,16 +20,17 @@ class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
         super.init()
     }
     
-    func setContent(#news: News) {
+    func setContent(news news: News) {
         let content = prepareHTML(news)
         webView.loadHTMLString(content, baseURL: news.article.link)
-        println(content)
+        print(content)
     }
     
     private func embedHTML(news: News) -> String {
         let htmlWrapperPath = NSBundle.mainBundle().pathForResource("wrapper", ofType: "html")
-        let htmlWrapper = NSString(contentsOfFile: htmlWrapperPath!, encoding: NSUTF8StringEncoding, error: nil)
-        let htmlContent = NSString(format: htmlWrapper!, news.article.title, news.article.title, news.article.content) as String
+        // the file is inside the bundle => implicit unwrap is okay
+        let htmlWrapper = try! NSString(contentsOfFile: htmlWrapperPath!, encoding: NSUTF8StringEncoding)
+        let htmlContent = NSString(format: htmlWrapper, news.article.title, news.article.title, news.article.content) as String
         return htmlContent
     }
     
@@ -40,7 +41,7 @@ class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         let urlString = request.URL?.absoluteString
         let x = urlString?.rangeOfString("http://campuswelle.uni-ulm.de/") != nil
-        println("LOADS?: \(x) \(urlString!)")
+        print("LOADS?: \(x) \(urlString!)")
         return x
     }
     

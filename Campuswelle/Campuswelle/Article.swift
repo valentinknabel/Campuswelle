@@ -12,7 +12,7 @@ protocol News {
     var article: Article { get }
 }
 
-struct Article: News, Printable {
+struct Article: News, CustomStringConvertible {
     
     var article: Article {
         return self

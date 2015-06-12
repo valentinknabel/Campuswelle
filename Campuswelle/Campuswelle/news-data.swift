@@ -14,7 +14,7 @@ private struct __persistentParser {
 
 let NewsFeed = NSURL(string: "http://campuswelle.uni-ulm.de/feed/")!
 
-private func loadNewsFeed(#success: (BNPodcastFeed) -> Void, #failure: (NSError) -> Void) {
+private func loadNewsFeed(success success: (BNPodcastFeed) -> Void, failure: (NSError) -> Void) {
     var parser: BNPodcastFeedParser?
     parser = BNPodcastFeedParser(feedURL: NewsFeed, withETag: nil, untilPubDate: nil,
         success: { _, f in
@@ -29,7 +29,9 @@ private func loadNewsFeed(#success: (BNPodcastFeed) -> Void, #failure: (NSError)
 }
 
 func toNews(feed: BNPodcastFeed) -> [News] {
-    return map(feed.items as! [BNPodcastFeedItem]) { i in
+    guard let items = feed.items as? [BNPodcastFeedItem]
+        else { fatalError("items of BNRSSFeed must be of type BNRSSFeedItem") }
+    return items.map { i in
         let article = toArticle(i)
         if let enc = i.enclosure?["url"] as? String {
             return Podcast(article: article,
@@ -49,7 +51,7 @@ func toNews(feed: BNPodcastFeed) -> [News] {
     }
 }
 
-func fetchNews(#success: ([News]) -> (), #failure: (NSError) -> ()) {
+func fetchNews(success success: ([News]) -> (), failure: (NSError) -> ()) {
     loadNewsFeed(success: { (feed) -> Void in
         success(toNews(feed))
     }, failure: failure)

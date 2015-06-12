@@ -49,7 +49,7 @@ func foldHtmlNode<T>(html: HtmlNode, initial: T, textFolder: (left: T, text: Str
         return textFolder(left: initial, text: t)
     case let .Node(tag: t, attributes: a, children: cs):
         let flattenedChildren: [T] = map(cs) { c in
-            foldHtmlNode(c, initial, textFolder, nodeFolder)
+            foldHtmlNode(c, initial: initial, textFolder: textFolder, nodeFolder: nodeFolder)
         }
         return nodeFolder(left: initial, tag: t, attributes: a, children: flattenedChildren)
     }
@@ -79,7 +79,7 @@ func combineStructuralNode(lhs: StructuralNode, rhs: StructuralNode) -> Structur
 }
 
 func toStructuralNode(html: HtmlNode) -> StructuralNode {
-    return foldHtmlNode(html, StructuralNode.Nil, { (left, text) -> StructuralNode in
+    return foldHtmlNode(html, initial: StructuralNode.Nil, textFolder: { (left, text) -> StructuralNode in
         let node = StructuralNode.Text(text)
         return combineStructuralNode(left, node)
     }) { (left, tag, attributes, children) -> StructuralNode in

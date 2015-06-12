@@ -16,10 +16,10 @@ class ArticleTableViewController: UITableViewController {
         fetchNews(success: { (n) -> () in
             self.news = n
             self.tableView.reloadData()
-            println("LOG: news reloaded")
+            print("LOG: news reloaded")
             
             }) { (error) -> () in
-                println("LOG: \(error)")
+                print("LOG: \(error)")
                 delay(10) {
                     self.tryReload()
                 }
@@ -57,7 +57,7 @@ class ArticleTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("articleCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("articleCell", forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
         cell.textLabel?.text = news[indexPath.row].article.title
@@ -108,7 +108,7 @@ class ArticleTableViewController: UITableViewController {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if let articleViewController = segue.destinationViewController as? ArticleViewController {
-            articleViewController.article = news[tableView.indexPathForSelectedRow()!.row].article
+            articleViewController.article = news[tableView.indexPathForSelectedRow!.row].article
         }
     }
 

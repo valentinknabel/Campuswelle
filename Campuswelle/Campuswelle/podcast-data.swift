@@ -9,15 +9,15 @@
 import Foundation
 
 func podcastFilter(news: News) -> Bool {
-    if let n = news as? Podcast {
+    if let _ = news as? Podcast {
         return true
     }
     return false
 }
 
-func fetchPodcasts(#success: ([Podcast]) -> (), #failure: (NSError) -> ()) {
+func fetchPodcasts(success success: ([Podcast]) -> (), failure: (NSError) -> ()) {
     fetchNews(success: { (news: [News]) -> () in
-        let filtered = filter(news, podcastFilter)
+        let filtered = news.filter(podcastFilter)
         let converted = filtered.map {
             return $0 as! Podcast
         }

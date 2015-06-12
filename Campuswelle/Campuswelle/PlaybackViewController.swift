@@ -16,10 +16,24 @@ class PlaybackViewController: UIViewController {
     @IBOutlet var rewindButton: UIButton!
     @IBOutlet var forwardButton: UIButton!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet weak var blurImageView: UIStackView!
+    @IBOutlet weak var audioSlider: UISlider!
+    @IBOutlet weak var podcastProgress: UIProgressView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subLabel: UILabel!
+    @IBOutlet weak var autoplayButton: UIButton!
     
     @IBAction func togglePodcast() {
         PodcastPlayer.sharedInstance.togglePlayback(self)
         self.refreshButtons()
+    }
+    
+    @IBAction func toggleAutoplay(sender: UIButton) {
+        
+    }
+    
+    @IBAction func unwindSegue(sender: UIButton) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func refreshButtons() {

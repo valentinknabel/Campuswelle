@@ -16,10 +16,10 @@ class PodcastTableViewController: UITableViewController {
         fetchPodcasts(success: { (p) -> () in
             self.podcasts = p
             self.tableView.reloadData()
-            println("LOG: news reloaded")
+            print("LOG: news reloaded")
             
             }) { (error) -> () in
-                println("LOG: \(error)")
+                print("LOG: \(error)")
                 delay(10) {
                     self.tryReload()
                 }
@@ -58,7 +58,7 @@ class PodcastTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("podcastCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("podcastCell", forIndexPath: indexPath) as UITableViewCell
 
         // Configure the cell...
         cell.textLabel?.text = podcasts[indexPath.row].subtitle
@@ -109,7 +109,7 @@ class PodcastTableViewController: UITableViewController {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
         if let podcastViewController = segue.destinationViewController as? PodcastViewController {
-            podcastViewController.podcast = podcasts[tableView.indexPathForSelectedRow()!.row]
+            podcastViewController.podcast = podcasts[tableView.indexPathForSelectedRow!.row]
         }
     }
 

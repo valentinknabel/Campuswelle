@@ -10,9 +10,6 @@
 		ABCE9E8CE382E6EB3055632C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FCF13BD47C1A26E91BC98 /* libPods.a */; };
 		DA1E7A721B0CD29B00263026 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A711B0CD29B00263026 /* NewsTableViewController.swift */; };
 		DA1E7A741B0CD3B500263026 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A731B0CD3B500263026 /* NewsViewController.swift */; };
-		DA1E7A761B0CE58500263026 /* structural-fold-phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A751B0CE58500263026 /* structural-fold-phase.swift */; };
-		DA1E7A791B0CE5AA00263026 /* semantic-fold-phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A781B0CE5AA00263026 /* semantic-fold-phase.swift */; };
-		DA1E7A7B1B0CE5C400263026 /* news-fold.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A7A1B0CE5C400263026 /* news-fold.swift */; };
 		DA34AF5A1AFA3E0C0064B45E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA34AF591AFA3E0C0064B45E /* libxml2.2.dylib */; };
 		DA34AF631AFA3F0B0064B45E /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = DA34AF5B1AFA3F0B0064B45E /* XPathQuery.m */; };
 		DA34AF641AFA3F0B0064B45E /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = DA34AF5F1AFA3F0B0064B45E /* TFHpple.m */; };
@@ -61,6 +58,7 @@
 /* Begin PBXFileReference section */
 		282FCF13BD47C1A26E91BC98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C286C656F7E7666AB413866E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DA04DFB41B2AEB630085C88A /* Campuswelle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Campuswelle.entitlements; sourceTree = "<group>"; };
 		DA1E7A711B0CD29B00263026 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		DA1E7A731B0CD3B500263026 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		DA1E7A751B0CE58500263026 /* structural-fold-phase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "structural-fold-phase.swift"; sourceTree = "<group>"; };
@@ -217,6 +215,7 @@
 		DA5AD6C71ADFF70E00C740E6 /* Campuswelle */ = {
 			isa = PBXGroup;
 			children = (
+				DA04DFB41B2AEB630085C88A /* Campuswelle.entitlements */,
 				DA759DC81AE2DC0000746678 /* additions.swift */,
 				DA701D651AE3D73600A19244 /* common-vc.swift */,
 				DA6E8DB01AE000400075525C /* Campuswelle-Bridging-Header.h */,
@@ -353,13 +352,18 @@
 		DA5AD6BD1ADFF70E00C740E6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Valentin Knabel";
 				TargetAttributes = {
 					DA5AD6C41ADFF70E00C740E6 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = LMF68UG2BU;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
 								enabled = 1;
 							};
 						};
@@ -458,7 +462,6 @@
 				DA6E8DAD1ADFFF060075525C /* article-data.swift in Sources */,
 				DA6E8DA71ADFFED10075525C /* AlbumCollectionViewController.swift in Sources */,
 				DA6E8DB61AE026D10075525C /* Article.swift in Sources */,
-				DA1E7A7B1B0CE5C400263026 /* news-fold.swift in Sources */,
 				DA759DC91AE2DC0000746678 /* additions.swift in Sources */,
 				DA701D6C1AE3E29500A19244 /* WebViewWrapperDelegate.swift in Sources */,
 				DA34AF681AFA444E0064B45E /* news-html.swift in Sources */,
@@ -468,7 +471,6 @@
 				DA701D681AE3DD6000A19244 /* PodcastViewController.swift in Sources */,
 				DA6E8DAF1ADFFF1C0075525C /* album-data.swift in Sources */,
 				DA759DDE1AE330AE00746678 /* PodcastPlayer.swift in Sources */,
-				DA1E7A791B0CE5AA00263026 /* semantic-fold-phase.swift in Sources */,
 				DA759DCE1AE2E2ED00746678 /* ArticleViewController.swift in Sources */,
 				DA6E8DAB1ADFFEFE0075525C /* podcast-data.swift in Sources */,
 				DA6E8DA51ADFFEBF0075525C /* PodcastTableViewController.swift in Sources */,
@@ -476,7 +478,6 @@
 				DA759DD61AE2F7E200746678 /* PlaybackViewController.swift in Sources */,
 				DA6E8DBE1AE03A1E0075525C /* news-data.swift in Sources */,
 				DA6E8DBA1AE026ED0075525C /* Album.swift in Sources */,
-				DA1E7A761B0CE58500263026 /* structural-fold-phase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +540,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -605,6 +607,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Campuswelle/Campuswelle.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
@@ -614,8 +619,11 @@
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = Campuswelle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.valentinknabel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Campuswelle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSION_INFO_PREFIX = "";
@@ -628,6 +636,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Campuswelle/Campuswelle.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PrefixHeader.pch;
 				HEADER_SEARCH_PATHS = (
@@ -637,8 +648,11 @@
 					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = Campuswelle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.valentinknabel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Campuswelle-Bridging-Header.h";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -658,6 +672,7 @@
 				);
 				INFOPLIST_FILE = CampuswelleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.valentinknabel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Campuswelle.app/Campuswelle";
 			};
@@ -673,6 +688,7 @@
 				);
 				INFOPLIST_FILE = CampuswelleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.valentinknabel.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Campuswelle.app/Campuswelle";
 			};
