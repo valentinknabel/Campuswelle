@@ -15,30 +15,77 @@ private func toItem(podcast: Podcast) -> AVPlayerItem {
     return AVPlayerItem(URL: podcast.enclosure)
 }
 
+private let livestreamURL = NSURL(string: "http://campuswelle.uni-ulm.de:8000/listen.mp3")!
+
 // TODO: Save [AVPlayerItem:Podcast] for displaying info, Set<Podcast> because we dont want to repeat one podcast
 
-@objc class PodcastPlayer: NSObject {
+class PodcastPlayer {
     
     private static var _sharedInstance: PodcastPlayer?
     static var sharedInstance: PodcastPlayer {
         return _sharedInstance ?? PodcastPlayer()
     }
     
-    private let player: AVQueuePlayer = AVQueuePlayer(items: []) as AVQueuePlayer
-    
-    enum Status {
-        case Paused
-        case Playing
-        case Empty
-    }
-    var status: Status = .Empty
-    
-    private override init() {
-        
-        super.init()
+    private init() {
         PodcastPlayer._sharedInstance = self
         
         prepare()
+    }
+    
+    enum PlayingItem {
+        case PodcastItem(Podcast)
+        case LiveStreamItem
+        case EmptyItem
+    }
+    
+    
+    private var player: AVPlayer? {
+        didSet {
+            defer { updateInfoCenter() }
+            guard let _ = self.player else { return }
+            self.play()
+        }
+    }
+    var currentItem: PlayingItem = .EmptyItem {
+        didSet {
+            switch currentItem {
+            case .EmptyItem:
+                player = nil
+            case .LiveStreamItem:
+                player = AVPlayer(URL: livestreamURL)
+            case .PodcastItem(let pod):
+                player = AVPlayer(playerItem: toItem(pod))
+            }
+        }
+    }
+    
+    enum PlaybackStatus {
+        case Playing
+        case Paused
+        case Empty
+    }
+    var status: PlaybackStatus {
+        switch currentItem {
+        case .EmptyItem:
+            return .Empty
+        default:
+            guard let p = player else { fatalError("Playing empty track") }
+            return p.rate == 0 ? .Paused : .Playing
+        }
+    }
+    
+    private func updateInfoCenter() {
+        switch currentItem {
+        case .EmptyItem:
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = nil
+        case .LiveStreamItem:
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = nil
+            //TODO: implement
+        case .PodcastItem(let pod):
+            let currentlyPlayingTrackInfo = [MPMediaItemPropertyArtist: "Campuswelle",
+                MPMediaItemPropertyTitle: pod.article.title]
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
+        }
     }
     
     private func prepare() {
@@ -51,54 +98,22 @@ private func toItem(podcast: Podcast) -> AVPlayerItem {
         }
     }
     
-    // TODO: Reimplement
-    func togglePlayback(sender: UIResponder) {
-        switch self.status {
-        case .Paused:
-            play(sender)
-        case .Playing:
-            pause(sender)
-        case .Empty:
-            break
-        }
-    }
-    
-    private func play(sender: UIResponder) {
-        self.player.play()
-        status = .Playing
+    func playPodcast(podcast: Podcast, sender: UIResponder) {
+        currentItem = .PodcastItem(podcast)
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         sender.becomeFirstResponder()
-        self.refreshInfoCenter()
     }
     
-    private func pause(sender: UIResponder) {
-        self.player.play()
-        status = .Paused
-        UIApplication.sharedApplication().endReceivingRemoteControlEvents()
+    func play(sender: UIResponder? = nil) {
+        player?.play()
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        sender?.becomeFirstResponder()
     }
     
-    func next() {
-        
-        refreshInfoCenter()
-    }
-    
-    private func refreshInfoCenter() {
-        // TODO: implement
-        /*switch (podcastQueue, status) {
-        case (_, .Empty):
-            break
-        case let (.Some(next), _):
-            let currentlyPlayingTrackInfo = [MPMediaItemPropertyArtist: "Campuswelle",
-                MPMediaItemPropertyTitle: next.value.article.title]
-            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
-        default:
-            println("PodcastPlayer inconsistent")
-        }*/
-    }
-    
-    func append(podcast: Podcast, sender: UIResponder) {
-        self.player.insertItem(toItem(podcast), afterItem: nil)
-        self.play(sender)
+    func pause(sender: UIResponder? = nil) {
+        player?.pause()
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        sender?.becomeFirstResponder()
     }
     
 }

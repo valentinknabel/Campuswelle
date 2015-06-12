@@ -7,25 +7,40 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class PlaybackViewController: UIViewController {
 
-    var podcast: Podcast!
+    var podcast: Podcast? {
+        didSet {
+            guard let p = podcast else { return }
+            PodcastPlayer.sharedInstance.currentItem = PodcastPlayer.PlayingItem.PodcastItem(p)
+        }
+    }
     @IBOutlet var playButton: UIButton!
     @IBOutlet var pauseButton: UIButton!
     @IBOutlet var rewindButton: UIButton!
     @IBOutlet var forwardButton: UIButton!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var blurImageView: UIStackView!
-    @IBOutlet weak var audioSlider: UISlider!
+    @IBOutlet weak var audioSlider: MPVolumeView!
     @IBOutlet weak var podcastProgress: UIProgressView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subLabel: UILabel!
     @IBOutlet weak var autoplayButton: UIButton!
     
-    @IBAction func togglePodcast() {
-        PodcastPlayer.sharedInstance.togglePlayback(self)
-        self.refreshButtons()
+    
+    @IBAction func rewind() {
+    }
+    @IBAction func play() {
+        PodcastPlayer.sharedInstance.play()
+        refreshButtons()
+    }
+    @IBAction func pause() {
+        PodcastPlayer.sharedInstance.pause()
+        refreshButtons()
+    }
+    @IBAction func fastForward() {
     }
     
     @IBAction func toggleAutoplay(sender: UIButton) {
@@ -64,6 +79,9 @@ class PlaybackViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //audioSlider.setMinimumVolumeSliderImage(UIImage(assetIdentifier: .VolumeMin), forState: .Normal)
+        //audioSlider.setMaximumVolumeSliderImage(UIImage(assetIdentifier: .VolumeMax), forState: .Normal)
+        
         self.refreshButtons()
     }
 

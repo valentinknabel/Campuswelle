@@ -43,6 +43,8 @@
 		DA759DD81AE3043D00746678 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA759DD71AE3043D00746678 /* AVFoundation.framework */; };
 		DA759DDC1AE3308000746678 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA759DDB1AE3308000746678 /* MediaPlayer.framework */; };
 		DA759DDE1AE330AE00746678 /* PodcastPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DDD1AE330AE00746678 /* PodcastPlayer.swift */; };
+		DACCB3911B2B14CB001A671C /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACCB3901B2B14CA001A671C /* SegueHandlerType.swift */; };
+		DACCB3931B2B1A8F001A671C /* AssetIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACCB3921B2B1A8F001A671C /* AssetIdentifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,8 @@
 		DA759DD91AE32AC600746678 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DA759DDB1AE3308000746678 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		DA759DDD1AE330AE00746678 /* PodcastPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastPlayer.swift; sourceTree = "<group>"; };
+		DACCB3901B2B14CA001A671C /* SegueHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
+		DACCB3921B2B1A8F001A671C /* AssetIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetIdentifier.swift; sourceTree = "<group>"; };
 		DC97D1657C8855F63D8C7C61 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +196,7 @@
 		DA5AD6BC1ADFF70E00C740E6 = {
 			isa = PBXGroup;
 			children = (
+				DACCB3901B2B14CA001A671C /* SegueHandlerType.swift */,
 				DA34AF661AFA3F4F0064B45E /* PrefixHeader.pch */,
 				DA34AF621AFA3F0B0064B45E /* Hpple */,
 				DA5AD6EC1ADFF71A00C740E6 /* Cartfile */,
@@ -236,6 +241,7 @@
 				DA701D6D1AE3EB3D00A19244 /* Album */,
 				DA5AD6D01ADFF70E00C740E6 /* Main.storyboard */,
 				DA5AD6D31ADFF70E00C740E6 /* Images.xcassets */,
+				DACCB3921B2B1A8F001A671C /* AssetIdentifier.swift */,
 				DA5AD6D51ADFF70E00C740E6 /* LaunchScreen.xib */,
 				DA5AD6C81ADFF70E00C740E6 /* Supporting Files */,
 			);
@@ -471,10 +477,12 @@
 				DA701D681AE3DD6000A19244 /* PodcastViewController.swift in Sources */,
 				DA6E8DAF1ADFFF1C0075525C /* album-data.swift in Sources */,
 				DA759DDE1AE330AE00746678 /* PodcastPlayer.swift in Sources */,
+				DACCB3911B2B14CB001A671C /* SegueHandlerType.swift in Sources */,
 				DA759DCE1AE2E2ED00746678 /* ArticleViewController.swift in Sources */,
 				DA6E8DAB1ADFFEFE0075525C /* podcast-data.swift in Sources */,
 				DA6E8DA51ADFFEBF0075525C /* PodcastTableViewController.swift in Sources */,
 				DA1E7A721B0CD29B00263026 /* NewsTableViewController.swift in Sources */,
+				DACCB3931B2B1A8F001A671C /* AssetIdentifier.swift in Sources */,
 				DA759DD61AE2F7E200746678 /* PlaybackViewController.swift in Sources */,
 				DA6E8DBE1AE03A1E0075525C /* news-data.swift in Sources */,
 				DA6E8DBA1AE026ED0075525C /* Album.swift in Sources */,

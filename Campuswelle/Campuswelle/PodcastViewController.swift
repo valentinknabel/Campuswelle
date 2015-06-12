@@ -15,7 +15,7 @@ class PodcastViewController: UIViewController {
     var contentWrapper = WebViewWrapperDelegate()
     
     func addPodcast() {
-        PodcastPlayer.sharedInstance.append(podcast, sender: self)
+        PodcastPlayer.sharedInstance.playPodcast(podcast, sender: self)
     }
     
     override func viewDidLoad() {
