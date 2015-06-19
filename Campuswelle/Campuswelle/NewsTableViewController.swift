@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsTableViewController: UITableViewController {
+class NewsTableViewController: UITableViewController, SegueHandlerType {
 
     var news: [News] = []
     
@@ -20,7 +20,7 @@ class NewsTableViewController: UITableViewController {
             
             }) { (error) -> () in
                 print("LOG: \(error)")
-                delay(10) {
+                delay(5) {
                     self.tryReload()
                 }
         }
@@ -102,12 +102,24 @@ class NewsTableViewController: UITableViewController {
     */
 
     // MARK: - Navigation
-
+    
+    enum SegueIdentifier: String {
+        case PlayLiveSegue = "PlayLiveSegue"
+        case ShowPlaybackSegue = "ShowPlaybackSegue"
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        if let newsViewController = segue.destinationViewController as? NewsViewController {
+        switch segueIdentifierForSegue(segue) {
+        case .PlayLiveSegue:
+            guard let playbackController = segue.destinationViewController as? PlaybackViewController
+                else { fatalError("segue not possible") }
+            playbackController.currentItem = .LiveStreamItem
+        case .ShowPlaybackSegue:
+            guard let newsViewController = segue.destinationViewController as? NewsViewController
+                else { fatalError("segue not possible") }
             newsViewController.news = news[tableView.indexPathForSelectedRow!.row]
         }
     }

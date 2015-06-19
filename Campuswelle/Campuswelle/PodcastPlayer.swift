@@ -53,6 +53,7 @@ class PodcastPlayer {
                     current = self.player?.currentTime()
                     where limit != kCMTimeIndefinite
                     else { new(nil);return }
+
                 new((current.seconds, limit.seconds))
             }
         }

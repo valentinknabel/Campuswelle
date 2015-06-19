@@ -15,8 +15,13 @@ private func timeString(time: Double) -> String {
 
 class PlaybackViewController: UIViewController {
 
-    private var currentItem: PodcastPlayer.PlayingItem {
-        return PodcastPlayer.sharedInstance.currentItem
+    var currentItem: PodcastPlayer.PlayingItem {
+        get {
+            return PodcastPlayer.sharedInstance.currentItem
+        }
+        set {
+            PodcastPlayer.sharedInstance.currentItem = newValue
+        }
     }
     var podcast: Podcast? {
         didSet {

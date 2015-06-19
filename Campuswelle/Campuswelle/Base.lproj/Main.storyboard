@@ -154,12 +154,18 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="6UB-QS-Tu3"/>
                         <barButtonItem title="Now playing" id="Vm9-Eh-U0C">
                             <connections>
-                                <segue destination="Shj-CY-T4B" kind="presentation" id="g1t-Ul-6TT"/>
+                                <segue destination="Shj-CY-T4B" kind="presentation" identifier="ShowPlaybackSegue" id="g1t-Ul-6TT"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="C9Q-Ra-xaA"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Campuswelle" id="TPv-W5-fWM"/>
+                    <navigationItem key="navigationItem" title="Campuswelle" id="TPv-W5-fWM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="04B-Ig-fac">
+                            <connections>
+                                <segue destination="Shj-CY-T4B" kind="presentation" identifier="PlayLiveSegue" id="s11-Ng-0cH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bc2-cI-lpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
