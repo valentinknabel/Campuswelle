@@ -38,8 +38,30 @@ class PodcastPlayer {
         case EmptyItem
     }
     
+    private var observerObject: AnyObject? {
+        willSet {
+            guard let observerObject = observerObject else { return }
+            self.player?.removeTimeObserver(observerObject)
+        }
+    }
+    var secondsObserver: ((Double, Double)? -> Void)?  {
+        didSet {
+            guard let new = secondsObserver else { return }
+            let time = CMTimeMake(1, 1)
+            observerObject = self.player?.addPeriodicTimeObserverForInterval(time, queue: nil) { _ in
+                guard let limit = self.player?.currentItem?.duration,
+                    current = self.player?.currentTime()
+                    where limit != kCMTimeIndefinite
+                    else { new(nil);return }
+                new((current.seconds, limit.seconds))
+            }
+        }
+    }
     
     private var player: AVPlayer? {
+        willSet {
+            self.observerObject = nil
+        }
         didSet {
             defer { updateInfoCenter() }
             guard let _ = self.player else { return }

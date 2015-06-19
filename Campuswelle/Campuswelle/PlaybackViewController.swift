@@ -9,8 +9,15 @@
 import UIKit
 import MediaPlayer
 
+private func timeString(time: Double) -> String {
+    return String(format: "%02d:%02d", arguments: [Int(time)/60, Int(time)%60])
+}
+
 class PlaybackViewController: UIViewController {
 
+    private var currentItem: PodcastPlayer.PlayingItem {
+        return PodcastPlayer.sharedInstance.currentItem
+    }
     var podcast: Podcast? {
         didSet {
             guard let p = podcast else { return }
@@ -28,6 +35,8 @@ class PlaybackViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subLabel: UILabel!
     @IBOutlet weak var autoplayButton: UIButton!
+    @IBOutlet weak var currentLabel: UILabel!
+    @IBOutlet weak var limitLabel: UILabel!
     
     
     @IBAction func rewind() {
@@ -82,9 +91,40 @@ class PlaybackViewController: UIViewController {
         //audioSlider.setMinimumVolumeSliderImage(UIImage(assetIdentifier: .VolumeMin), forState: .Normal)
         //audioSlider.setMaximumVolumeSliderImage(UIImage(assetIdentifier: .VolumeMax), forState: .Normal)
         
+        secondsObserver(nil)
+        PodcastPlayer.sharedInstance.secondsObserver = secondsObserver
+        
         self.refreshButtons()
+
     }
 
+    private func secondsObserver(pair: (Double, Double)?) {
+        // set time
+        if let (current, limit) = pair {
+            self.podcastProgress.progress = Float(current/limit)
+            self.currentLabel.text = timeString(current)
+            self.limitLabel.text = timeString(limit)
+        }
+        else {
+            self.podcastProgress.progress = 0.0
+            self.currentLabel.text = ""
+            self.limitLabel.text = ""
+        }
+        
+        // update title
+        switch self.currentItem {
+        case .EmptyItem:
+            self.titleLabel.text = ""
+            self.subLabel.text = ""
+        case .LiveStreamItem:
+            self.titleLabel.text = "Live"
+            self.subLabel.text = "Stream"
+        case let .PodcastItem(p):
+            self.titleLabel.text = p.article.title
+            self.subLabel.text = "Campuswelle"
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
