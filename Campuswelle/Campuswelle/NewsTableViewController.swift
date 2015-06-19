@@ -105,6 +105,7 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
     
     enum SegueIdentifier: String {
         case PlayLiveSegue = "PlayLiveSegue"
+        case ShowArticleSegue = "ShowArticleSegue"
         case ShowPlaybackSegue = "ShowPlaybackSegue"
     }
     
@@ -118,6 +119,8 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
                 else { fatalError("segue not possible") }
             playbackController.currentItem = .LiveStreamItem
         case .ShowPlaybackSegue:
+            break
+        case .ShowArticleSegue:
             guard let newsViewController = segue.destinationViewController as? NewsViewController
                 else { fatalError("segue not possible") }
             newsViewController.news = news[tableView.indexPathForSelectedRow!.row]
