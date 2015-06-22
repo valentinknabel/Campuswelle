@@ -91,6 +91,9 @@ class PodcastPlayer {
         switch currentItem {
         case .EmptyItem:
             return .Empty
+        case .LiveStreamItem:
+            guard let _ = player else { return .Paused }
+            fallthrough
         default:
             guard let p = player else { fatalError("Playing empty track") }
             return p.rate == 0 ? .Paused : .Playing
@@ -131,6 +134,10 @@ class PodcastPlayer {
     }
     
     func play(sender: UIResponder? = nil) {
+        if case .LiveStreamItem = self.currentItem where player == nil {
+            self.currentItem = .LiveStreamItem
+        }
+        
         player?.play()
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         sender?.becomeFirstResponder()
@@ -138,6 +145,9 @@ class PodcastPlayer {
     
     func pause(sender: UIResponder? = nil) {
         player?.pause()
+        if case .LiveStreamItem = self.currentItem {
+            self.player = nil
+        }
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
         sender?.becomeFirstResponder()
     }
