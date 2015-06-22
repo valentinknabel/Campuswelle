@@ -15,6 +15,7 @@
 		DA34AF641AFA3F0B0064B45E /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = DA34AF5F1AFA3F0B0064B45E /* TFHpple.m */; };
 		DA34AF651AFA3F0B0064B45E /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA34AF611AFA3F0B0064B45E /* TFHppleElement.m */; };
 		DA34AF681AFA444E0064B45E /* news-html.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34AF671AFA444E0064B45E /* news-html.swift */; };
+		DA36CF881B38A18F00905ABB /* UIImage+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA36CF871B38A18F00905ABB /* UIImage+Overlay.swift */; };
 		DA5AD6CB1ADFF70E00C740E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5AD6CA1ADFF70E00C740E6 /* AppDelegate.swift */; };
 		DA5AD6D21ADFF70E00C740E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA5AD6D01ADFF70E00C740E6 /* Main.storyboard */; };
 		DA5AD6D41ADFF70E00C740E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5AD6D31ADFF70E00C740E6 /* Images.xcassets */; };
@@ -75,6 +76,7 @@
 		DA34AF611AFA3F0B0064B45E /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFHppleElement.m; sourceTree = "<group>"; };
 		DA34AF661AFA3F4F0064B45E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		DA34AF671AFA444E0064B45E /* news-html.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "news-html.swift"; sourceTree = "<group>"; };
+		DA36CF871B38A18F00905ABB /* UIImage+Overlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Overlay.swift"; sourceTree = "<group>"; };
 		DA5AD6C51ADFF70E00C740E6 /* Campuswelle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Campuswelle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5AD6C91ADFF70E00C740E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA5AD6CA1ADFF70E00C740E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				DACCB3901B2B14CA001A671C /* SegueHandlerType.swift */,
+				DA36CF871B38A18F00905ABB /* UIImage+Overlay.swift */,
 				DA34AF661AFA3F4F0064B45E /* PrefixHeader.pch */,
 				DA34AF621AFA3F0B0064B45E /* Hpple */,
 				DA5AD6EC1ADFF71A00C740E6 /* Cartfile */,
@@ -482,6 +485,7 @@
 				DA759DCE1AE2E2ED00746678 /* ArticleViewController.swift in Sources */,
 				DA6E8DAB1ADFFEFE0075525C /* podcast-data.swift in Sources */,
 				DA6E8DA51ADFFEBF0075525C /* PodcastTableViewController.swift in Sources */,
+				DA36CF881B38A18F00905ABB /* UIImage+Overlay.swift in Sources */,
 				DA1E7A721B0CD29B00263026 /* NewsTableViewController.swift in Sources */,
 				DACCB3931B2B1A8F001A671C /* AssetIdentifier.swift in Sources */,
 				DA759DD61AE2F7E200746678 /* PlaybackViewController.swift in Sources */,

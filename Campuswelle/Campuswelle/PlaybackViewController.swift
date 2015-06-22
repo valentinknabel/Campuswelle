@@ -101,7 +101,12 @@ class PlaybackViewController: UIViewController {
         for sub in self.audioSlider.subviews {
             guard let button = sub as? UIButton
                 else { continue }
-            button.tintColor = UIColor.blackColor()
+            let airplayImage = button.imageForState(UIControlState.Normal)
+            let blackImage = airplayImage?.imageWithColor(UIColor.blackColor())
+            button.setImage(blackImage, forState: .Normal)
+            let tintImage = airplayImage?.imageWithColor(button.tintColor)
+            button.setImage(tintImage, forState: .Highlighted)
+            button.setImage(tintImage, forState: .Selected)
         }
         self.refreshButtons()
 
