@@ -105,8 +105,11 @@ class PodcastPlayer {
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = nil
             //TODO: implement
         case .PodcastItem(let pod):
+            let artwork = MPMediaItemArtwork(image: UIImage(assetIdentifier: UIImage.AssetIdentifier.DefaultCover))
             let currentlyPlayingTrackInfo = [MPMediaItemPropertyArtist: "Campuswelle",
-                MPMediaItemPropertyTitle: pod.article.title]
+                MPMediaItemPropertyTitle: pod.article.title,
+                MPMediaItemPropertyArtwork: artwork
+            ]
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
         }
     }
@@ -114,7 +117,7 @@ class PodcastPlayer {
     private func prepare() {
         // Set AudioSession
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: .MixWithOthers)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: .DefaultToSpeaker)
         }
         catch {
             print(error)

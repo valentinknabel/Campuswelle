@@ -34,7 +34,7 @@ class PlaybackViewController: UIViewController {
     @IBOutlet var rewindButton: UIButton!
     @IBOutlet var forwardButton: UIButton!
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet weak var blurImageView: UIStackView!
+    @IBOutlet weak var blurImageView: UIImageView!
     @IBOutlet weak var audioSlider: MPVolumeView!
     @IBOutlet weak var podcastProgress: UIProgressView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -98,7 +98,11 @@ class PlaybackViewController: UIViewController {
         
         secondsObserver(nil)
         PodcastPlayer.sharedInstance.secondsObserver = secondsObserver
-        
+        for sub in self.audioSlider.subviews {
+            guard let button = sub as? UIButton
+                else { continue }
+            button.tintColor = UIColor.blackColor()
+        }
         self.refreshButtons()
 
     }
