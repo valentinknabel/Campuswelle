@@ -69,8 +69,16 @@ class PlaybackViewController: UIViewController {
         func setEnabled(flag: Bool) {
             playButton.enabled = flag
             pauseButton.enabled = flag
-            rewindButton.enabled = flag
-            forwardButton.enabled = flag
+            
+            let forward: Bool
+            switch PodcastPlayer.sharedInstance.currentItem {
+            case .PodcastItem(_):
+                forward = true
+            default:
+                forward = false
+            }
+            rewindButton.enabled = forward
+            forwardButton.enabled = forward
         }
         
         switch PodcastPlayer.sharedInstance.status {
@@ -116,6 +124,8 @@ class PlaybackViewController: UIViewController {
     }
 
     private func secondsObserver(pair: (Double, Double)?) {
+        self.refreshButtons()
+        
         // set time
         if let (current, limit) = pair {
             self.podcastProgress.progress = Float(current/limit)
