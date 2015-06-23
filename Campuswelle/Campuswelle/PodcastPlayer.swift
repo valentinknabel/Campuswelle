@@ -10,41 +10,68 @@ import Foundation
 import AVFoundation
 import MediaPlayer
 
-
+/// Converts a podcast to an player item.
 private func toItem(podcast: Podcast) -> AVPlayerItem {
     return AVPlayerItem(URL: podcast.enclosure)
 }
 
 private let livestreamURL = NSURL(string: "http://campuswelle.uni-ulm.de:8000/listen.mp3")!
+private let metaDataURL = NSURL(string: "http://campuswelle.uni-ulm.de/wp-content/themes/campuswelle/stream-meta_api.php?amount=1")!
 
-// TODO: Save [AVPlayerItem:Podcast] for displaying info, Set<Podcast> because we dont want to repeat one podcast
-
-class PodcastPlayer {
+/// The podcast player can play a livestream and podcasts.
+public class PodcastPlayer {
     
+    /// Stores the singleton instance.
     private static var _sharedInstance: PodcastPlayer?
-    static var sharedInstance: PodcastPlayer {
+    /// Use this property instead of init().
+    public static var sharedInstance: PodcastPlayer {
         return _sharedInstance ?? PodcastPlayer()
     }
     
+    /// Instances of this class shall only be instantiated from inside this class.
     private init() {
         PodcastPlayer._sharedInstance = self
         
         prepare()
     }
     
-    enum PlayingItem {
+    /// Represents the currently playing items.
+    public enum PlayingItem {
+        /// Buffers a bit when paused.
         case PodcastItem(Podcast)
+        /// Pausing and playing will take some time to prevent infinite buffering.
+        /// Rewind and fast forward will be disabled.
         case LiveStreamItem
+        /// All controls will be disabled.
         case EmptyItem
     }
     
+    /// The currently played item. 
+    /// For further details see PlaingItem's cases.
+    public var currentItem: PlayingItem = .EmptyItem {
+        didSet {
+            switch currentItem {
+            case .EmptyItem:
+                player = nil
+            case .LiveStreamItem:
+                player = AVPlayer(URL: livestreamURL)
+                self.refreshTitle()
+            case .PodcastItem(let pod):
+                player = AVPlayer(playerItem: toItem(pod))
+            }
+        }
+    }
+    
+    /// This property stores the object returned for the seconds observer.
     private var observerObject: AnyObject? {
         willSet {
             guard let observerObject = observerObject else { return }
             self.player?.removeTimeObserver(observerObject)
         }
     }
-    var secondsObserver: ((Double, Double)? -> Void)?  {
+    
+    /// Set this property to receive time updates.
+    public var secondsObserver: ((Double, Double)? -> Void)?  {
         didSet {
             guard let new = secondsObserver else { return }
             let time = CMTimeMake(1, 1)
@@ -59,6 +86,7 @@ class PodcastPlayer {
         }
     }
     
+    /// Stores the current player.
     private var player: AVPlayer? {
         willSet {
             self.observerObject = nil
@@ -69,25 +97,32 @@ class PodcastPlayer {
             self.play()
         }
     }
-    var currentItem: PlayingItem = .EmptyItem {
+    
+    /// Stores the least recent title. May not be the current item's title.
+    private var leastRecentTitle: String?
+    
+    /// Stores an observer for a given title.
+    public var titleObserver: ((String?) -> Void)? {
         didSet {
-            switch currentItem {
-            case .EmptyItem:
-                player = nil
-            case .LiveStreamItem:
-                player = AVPlayer(URL: livestreamURL)
-            case .PodcastItem(let pod):
-                player = AVPlayer(playerItem: toItem(pod))
-            }
+            titleObserver?(leastRecentTitle)
         }
     }
+    private var titleTimer: NSTimer?
     
-    enum PlaybackStatus {
+}
+
+/// PodcastPlayer additions for playback.
+public extension PodcastPlayer {
+    
+    /// Represents the external status of the current playback.
+    public enum PlaybackStatus {
         case Playing
         case Paused
         case Empty
     }
-    var status: PlaybackStatus {
+    
+    /// The current playback status of the podcast player.
+    public var status: PlaybackStatus {
         switch currentItem {
         case .EmptyItem:
             return .Empty
@@ -100,23 +135,81 @@ class PodcastPlayer {
         }
     }
     
-    private func updateInfoCenter() {
-        switch currentItem {
-        case .EmptyItem:
-            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = nil
-        case .LiveStreamItem:
-            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = nil
-            //TODO: implement
-        case .PodcastItem(let pod):
-            let artwork = MPMediaItemArtwork(image: UIImage(assetIdentifier: UIImage.AssetIdentifier.DefaultCover))
-            let currentlyPlayingTrackInfo = [MPMediaItemPropertyArtist: "Campuswelle",
-                MPMediaItemPropertyTitle: pod.article.title,
-                MPMediaItemPropertyArtwork: artwork
-            ]
-            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
-        }
+    /// Initiates playback of a given podcast.
+    public func playPodcast(podcast: Podcast, sender: UIResponder? = nil) {
+        currentItem = .PodcastItem(podcast)
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        sender?.becomeFirstResponder()
     }
     
+    /// Re-plays currentItem, if not .EmptyItem. 
+    /// May take some time to start for .LiveStreamItem.
+    public func play(sender: UIResponder? = nil) {
+        if case .LiveStreamItem = self.currentItem where player == nil {
+            self.currentItem = .LiveStreamItem
+        }
+        
+        player?.play()
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        sender?.becomeFirstResponder()
+    }
+    
+    /// Pauses playback of currentItem.
+    public func pause(sender: UIResponder? = nil) {
+        player?.pause()
+        if case .LiveStreamItem = self.currentItem {
+            self.player = nil
+        }
+        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
+        sender?.becomeFirstResponder()
+    }
+    
+}
+
+/// PodcastPlayer additions for meta info of the current item.
+public extension PodcastPlayer {
+    
+    /// Typically a new title
+    private func refreshTitleAfter(timeInterval: NSTimeInterval) {
+        titleTimer = NSTimer(timeInterval: timeInterval, target: self, selector: Selector("refreshTitle"), userInfo: nil, repeats: false)
+    }
+    
+    private func refreshTitle() {
+        enum LocalError: ErrorType {
+            /// Repeat after some seconds
+            case LoadingError
+        }
+        
+        do {
+            let fetchedMetaData = NSData(contentsOfURL: metaDataURL)
+            guard let metaData = fetchedMetaData else { throw LocalError.LoadingError }
+            let json = try NSJSONSerialization.JSONObjectWithData(metaData, options: NSJSONReadingOptions.AllowFragments)
+            guard let songs = json as? [NSDictionary],
+                title = songs[0]["title"] as? String
+                else {
+                    print("Invalid server data")
+                    return
+            }
+            self.leastRecentTitle = title
+            titleObserver?(title)
+            
+            /// succeeded
+            updateInfoCenter()
+            refreshTitleAfter(120)
+        }
+        catch {
+            refreshTitleAfter(5)
+        }
+        
+    }
+    
+}
+
+
+/// Internal PodcastPlayer additions.
+private extension PodcastPlayer {
+    
+    /// Prepares the audio session.
     private func prepare() {
         // Set AudioSession
         do {
@@ -127,29 +220,29 @@ class PodcastPlayer {
         }
     }
     
-    func playPodcast(podcast: Podcast, sender: UIResponder) {
-        currentItem = .PodcastItem(podcast)
-        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
-        sender.becomeFirstResponder()
-    }
-    
-    func play(sender: UIResponder? = nil) {
-        if case .LiveStreamItem = self.currentItem where player == nil {
-            self.currentItem = .LiveStreamItem
+    /// Updates the info center.
+    private func updateInfoCenter() {
+        switch currentItem {
+        case .EmptyItem:
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = nil
+        case .LiveStreamItem:
+            let artwork = MPMediaItemArtwork(image: UIImage(assetIdentifier: UIImage.AssetIdentifier.DefaultCover))
+            let currentlyPlayingTrackInfo = [
+                MPMediaItemPropertyArtist: "Campuswelle Live",
+                MPMediaItemPropertyTitle: leastRecentTitle ?? "",
+                MPMediaItemPropertyArtwork: artwork
+            ]
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
+        case .PodcastItem(let pod):
+            let artwork = MPMediaItemArtwork(image: UIImage(assetIdentifier: UIImage.AssetIdentifier.DefaultCover))
+            let currentlyPlayingTrackInfo = [
+                MPMediaItemPropertyArtist: "Campuswelle",
+                MPMediaItemPropertyTitle: pod.article.title,
+                MPMediaItemPropertyArtwork: artwork
+            ]
+            MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
         }
-        
-        player?.play()
-        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
-        sender?.becomeFirstResponder()
-    }
-    
-    func pause(sender: UIResponder? = nil) {
-        player?.pause()
-        if case .LiveStreamItem = self.currentItem {
-            self.player = nil
-        }
-        UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
-        sender?.becomeFirstResponder()
     }
     
 }
+

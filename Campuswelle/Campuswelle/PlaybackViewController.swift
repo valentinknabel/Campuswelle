@@ -98,6 +98,9 @@ class PlaybackViewController: UIViewController {
         
         secondsObserver(nil)
         PodcastPlayer.sharedInstance.secondsObserver = secondsObserver
+        
+        PodcastPlayer.sharedInstance.titleObserver = titleObserver
+        
         for sub in self.audioSlider.subviews {
             guard let button = sub as? UIButton
                 else { continue }
@@ -131,12 +134,16 @@ class PlaybackViewController: UIViewController {
             self.titleLabel.text = ""
             self.subLabel.text = ""
         case .LiveStreamItem:
-            self.titleLabel.text = "Live"
-            self.subLabel.text = "Stream"
+            break
         case let .PodcastItem(p):
             self.titleLabel.text = p.article.title
             self.subLabel.text = "Campuswelle"
         }
+    }
+    
+    private func titleObserver(title: String?) {
+        self.titleLabel.text = title
+        self.subLabel.text = "Campuswelle Live"
     }
     
     override func didReceiveMemoryWarning() {

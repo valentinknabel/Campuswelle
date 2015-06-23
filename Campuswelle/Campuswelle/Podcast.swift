@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Podcast: News {
-    let article: Article
+public struct Podcast: News {
+    public let article: Article
     
-    let subtitle: String
-    let summary: String
-    let enclosure: NSURL
-    let duration: NSTimeInterval
+    public let subtitle: String
+    public let summary: String
+    public let enclosure: NSURL
+    public let duration: NSTimeInterval
 }

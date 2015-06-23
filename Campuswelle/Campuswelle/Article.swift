@@ -8,26 +8,26 @@
 
 import Foundation
 
-protocol News {
+public protocol News {
     var article: Article { get }
 }
 
-struct Article: News, CustomStringConvertible {
+public struct Article: News, CustomStringConvertible {
     
-    var article: Article {
+    public var article: Article {
         return self
     }
     
-    let title: String
-    let link: NSURL
-    let desc: String
-    let categories: [String]
-    let content: String
+    public let title: String
+    public let link: NSURL
+    public let desc: String
+    public let categories: [String]
+    public let content: String
     
-    let imageUrls: [NSURL]
-    let videoUrls: [NSURL]
+    public let imageUrls: [NSURL]
+    public let videoUrls: [NSURL]
     
-    var description: String {
+    public var description: String {
         return "A: \(title)"
     }
 }
