@@ -89,12 +89,21 @@ public class PodcastPlayer {
     /// Stores the current player.
     private var player: AVPlayer? {
         willSet {
-            self.observerObject = nil
+            defer { self.observerObject = nil }
+            guard case .LiveStreamItem = self.currentItem else {
+                self.secondsObserver = nil
+                return
+            }
         }
         didSet {
             defer { updateInfoCenter() }
             guard let _ = self.player else { return }
+            
             self.play()
+            
+            // resetting the seconds observer will create a new periodic time observer
+            let temp = self.secondsObserver
+            self.secondsObserver = temp
         }
     }
     

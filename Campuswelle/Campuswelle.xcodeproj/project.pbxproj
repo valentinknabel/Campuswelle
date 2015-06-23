@@ -193,14 +193,6 @@
 			path = ../carthage/checkouts/hpple;
 			sourceTree = "<group>";
 		};
-		DA36CF891B3954ED00905ABB /* Player */ = {
-			isa = PBXGroup;
-			children = (
-				DA759DDD1AE330AE00746678 /* PodcastPlayer.swift */,
-			);
-			name = Player;
-			sourceTree = "<group>";
-		};
 		DA5AD6BC1ADFF70E00C740E6 = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +225,7 @@
 				DA759DC81AE2DC0000746678 /* additions.swift */,
 				DA701D651AE3D73600A19244 /* common-vc.swift */,
 				DA6E8DB01AE000400075525C /* Campuswelle-Bridging-Header.h */,
-				DA36CF891B3954ED00905ABB /* Player */,
+				DA759DDD1AE330AE00746678 /* PodcastPlayer.swift */,
 				DA5AD6CA1ADFF70E00C740E6 /* AppDelegate.swift */,
 				DA6E8DB51AE026D10075525C /* Article.swift */,
 				DA6E8DB71AE026DD0075525C /* Podcast.swift */,
