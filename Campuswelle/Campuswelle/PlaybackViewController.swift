@@ -38,13 +38,14 @@ class PlaybackViewController: UIViewController {
     @IBOutlet weak var audioSlider: MPVolumeView!
     @IBOutlet weak var podcastProgress: UIProgressView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subLabel: UILabel!
+    @IBOutlet weak var subLabel: UILabel?
     @IBOutlet weak var autoplayButton: UIButton!
     @IBOutlet weak var currentLabel: UILabel!
     @IBOutlet weak var limitLabel: UILabel!
     
     
-    @IBAction func rewind() {
+    @IBAction func seekBackward() {
+        PodcastPlayer.sharedInstance.seekRelative(-15)
     }
     @IBAction func play() {
         PodcastPlayer.sharedInstance.play()
@@ -54,7 +55,8 @@ class PlaybackViewController: UIViewController {
         PodcastPlayer.sharedInstance.pause()
         refreshButtons()
     }
-    @IBAction func fastForward() {
+    @IBAction func seekForward() {
+        PodcastPlayer.sharedInstance.seekRelative(15)
     }
     
     @IBAction func toggleAutoplay(sender: UIButton) {
@@ -142,18 +144,18 @@ class PlaybackViewController: UIViewController {
         switch self.currentItem {
         case .EmptyItem:
             self.titleLabel.text = ""
-            self.subLabel.text = ""
+            self.subLabel?.text = ""
         case .LiveStreamItem:
             break
         case let .PodcastItem(p):
             self.titleLabel.text = p.article.title
-            self.subLabel.text = "Campuswelle"
+            self.subLabel?.text = "Campuswelle"
         }
     }
     
     private func titleObserver(title: String?) {
         self.titleLabel.text = title
-        self.subLabel.text = "Campuswelle Live"
+        self.subLabel?.text = "Campuswelle Live"
     }
     
     override func didReceiveMemoryWarning() {

@@ -173,6 +173,15 @@ public extension PodcastPlayer {
         sender?.becomeFirstResponder()
     }
     
+    /// Performs a step rewind.
+    public func seekRelative(timeInterval: NSTimeInterval) {
+        let current = player?.currentTime() ?? CMTimeMake(0, 0)
+        let targetTime = CMTimeMake(Int64(current.seconds + timeInterval), 1)
+        player?.seekToTime(targetTime) { b in
+            print(b)
+        }
+    }
+    
 }
 
 /// PodcastPlayer additions for meta info of the current item.

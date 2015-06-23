@@ -303,13 +303,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fib-P4-FrD">
-                                <rect key="frame" x="20" y="366" width="280" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="chZ-p1-MW7">
                                 <rect key="frame" x="130" y="457" width="61" height="30"/>
                                 <animations/>
@@ -339,7 +332,7 @@
                                 <animations/>
                                 <state key="normal" image="ios7-fastforward"/>
                                 <connections>
-                                    <action selector="fastForward" destination="Shj-CY-T4B" eventType="touchUpInside" id="pGj-Kt-aX3"/>
+                                    <action selector="seekForward" destination="Shj-CY-T4B" eventType="touchUpInside" id="NmZ-8d-C0Z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ccr-bV-Rka">
@@ -347,7 +340,7 @@
                                 <animations/>
                                 <state key="normal" image="ios7-rewind"/>
                                 <connections>
-                                    <action selector="rewind" destination="Shj-CY-T4B" eventType="touchUpInside" id="oGj-Gx-OYl"/>
+                                    <action selector="seekBackward" destination="Shj-CY-T4B" eventType="touchUpInside" id="NJu-HP-Pfs"/>
                                 </connections>
                             </button>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default-cover" translatesAutoresizingMaskIntoConstraints="NO" id="RrD-k6-r5f">
@@ -395,7 +388,6 @@
                         <outlet property="playButton" destination="cXu-xv-8gm" id="nNW-s5-6L2"/>
                         <outlet property="podcastProgress" destination="e0b-oU-o7D" id="fXh-mQ-BHO"/>
                         <outlet property="rewindButton" destination="Ccr-bV-Rka" id="cwn-cl-1Hp"/>
-                        <outlet property="subLabel" destination="fib-P4-FrD" id="qdD-1e-3Xk"/>
                         <outlet property="titleLabel" destination="yuk-BF-tLJ" id="EcD-bP-rEF"/>
                     </connections>
                 </viewController>
