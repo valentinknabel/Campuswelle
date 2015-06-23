@@ -117,7 +117,10 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
         case .PlayLiveSegue:
             guard let playbackController = segue.destinationViewController as? PlaybackViewController
                 else { fatalError("segue not possible") }
-            playbackController.currentItem = .LiveStreamItem
+            guard case .LiveStreamItem = playbackController.currentItem else {
+                playbackController.currentItem = .LiveStreamItem
+                break
+            }
         case .ShowPlaybackSegue:
             break
         case .ShowArticleSegue:
