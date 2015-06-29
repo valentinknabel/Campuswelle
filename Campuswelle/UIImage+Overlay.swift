@@ -16,7 +16,8 @@ public extension UIImage {
         let context: CGContextRef = UIGraphicsGetCurrentContext()
         CGContextTranslateCTM(context, 0, self.size.height)
         CGContextScaleCTM(context, 1.0, -1.0)
-        CGContextSetBlendMode(context, kCGBlendModeNormal)
+        
+        CGContextSetBlendMode(context, CGBlendMode.Normal)
         let rect: CGRect = CGRectMake(0, 0, self.size.width, self.size.height)
         CGContextClipToMask(context, rect, self.CGImage)
         color.setFill()

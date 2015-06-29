@@ -160,7 +160,8 @@ public extension PodcastPlayer {
         
         player?.play()
         UIApplication.sharedApplication().beginReceivingRemoteControlEvents()
-        sender?.becomeFirstResponder()
+        guard let delegate = UIApplication.sharedApplication().delegate as? AppDelegate else { return }
+        delegate.becomeFirstResponder()
     }
     
     /// Pauses playback of currentItem.
@@ -248,7 +249,8 @@ private extension PodcastPlayer {
             let currentlyPlayingTrackInfo = [
                 MPMediaItemPropertyArtist: "Campuswelle Live",
                 MPMediaItemPropertyTitle: leastRecentTitle ?? "",
-                MPMediaItemPropertyArtwork: artwork
+                MPMediaItemPropertyArtwork: artwork,
+                MPMediaItemPropertyMediaType: MPMediaType.AnyAudio.rawValue
             ]
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
         case .PodcastItem(let pod):
@@ -256,9 +258,27 @@ private extension PodcastPlayer {
             let currentlyPlayingTrackInfo = [
                 MPMediaItemPropertyArtist: "Campuswelle",
                 MPMediaItemPropertyTitle: pod.article.title,
-                MPMediaItemPropertyArtwork: artwork
+                MPMediaItemPropertyArtwork: artwork,
+                MPMediaItemPropertyMediaType: MPMediaType.Podcast.rawValue
             ]
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
+        }
+    }
+    
+}
+
+/// Eggs
+internal extension PodcastPlayer {
+    
+    internal func juneEgg() {
+        guard let p = player else { return }
+        switch p.rate {
+        case 1.0:
+            p.rate = 0.5
+        case 0.5:
+            p.rate = 3.0
+        default:
+            p.rate = 1.0
         }
     }
     

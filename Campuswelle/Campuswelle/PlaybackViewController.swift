@@ -122,6 +122,8 @@ class PlaybackViewController: UIViewController {
             button.setImage(tintImage, forState: .Selected)
         }
         self.refreshButtons()
+        
+        self.becomeFirstResponder()
 
     }
 
@@ -161,6 +163,15 @@ class PlaybackViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        switch event!.subtype {
+        case .MotionShake:
+            PodcastPlayer.sharedInstance.juneEgg()
+        default:
+            break
+        }
     }
     
 

@@ -23,6 +23,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        switch event!.subtype {
+        case .MotionShake:
+            PodcastPlayer.sharedInstance.juneEgg()
+        default:
+            break
+        }
+    }
+    
+    override func remoteControlReceivedWithEvent(optEvent: UIEvent?) {
+        guard let event = optEvent else { return }
+        switch event.type {
+        case .RemoteControl:
+            switch event.subtype {
+            case .RemoteControlPause:
+                PodcastPlayer.sharedInstance.pause()
+            case .RemoteControlPlay:
+                PodcastPlayer.sharedInstance.play()
+            default:
+                break
+            }
+        case .Motion:
+            switch event.subtype {
+            case .MotionShake:
+                PodcastPlayer.sharedInstance.juneEgg()
+            default:
+                break
+            }
+        default:
+            break
+        }
+    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
