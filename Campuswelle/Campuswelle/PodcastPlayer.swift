@@ -139,7 +139,7 @@ public extension PodcastPlayer {
             guard let _ = player else { return .Paused }
             fallthrough
         default:
-            guard let p = player else { fatalError("Playing empty track") }
+            guard let p = player else { fatalError("PodcastPlayer.status: Playing empty track") }
             return p.rate == 0 ? .Paused : .Playing
         }
     }
@@ -181,7 +181,7 @@ public extension PodcastPlayer {
         let seconds = Float(limit.seconds) * percent
         let targetTime = CMTimeMake(Int64(seconds), 1)
         player?.seekToTime(targetTime) { b in
-            print(b)
+            print("PodcastPlayer.seekAbsolute: \(b)")
         }
     }
     
@@ -190,7 +190,7 @@ public extension PodcastPlayer {
         let current = player?.currentTime() ?? CMTimeMake(0, 0)
         let targetTime = CMTimeMake(Int64(current.seconds + timeInterval), 1)
         player?.seekToTime(targetTime) { b in
-            print(b)
+            print("PodcastPlayer.seekRelative: \(b)")
         }
     }
     
@@ -217,7 +217,7 @@ public extension PodcastPlayer {
             guard let songs = json as? [NSDictionary],
                 title = songs[0]["title"] as? String
                 else {
-                    print("Invalid server data")
+                    print("PodcastPlayer.refreshTitle: Invalid server data")
                     return
             }
             self.leastRecentTitle = title
@@ -246,7 +246,7 @@ private extension PodcastPlayer {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: .DefaultToSpeaker)
         }
         catch {
-            print(error)
+            print("PodcastPlayer.prepare \(error)")
         }
     }
     

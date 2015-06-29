@@ -23,7 +23,6 @@ class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
     func setContent(news news: News) {
         let content = prepareHTML(news)
         webView.loadHTMLString(content, baseURL: news.article.link)
-        print(content)
     }
     
     private func embedHTML(news: News) -> String {
@@ -41,7 +40,7 @@ class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         let urlString = request.URL?.absoluteString
         let x = urlString?.rangeOfString("http://campuswelle.uni-ulm.de/") != nil
-        print("LOADS?: \(x) \(urlString!)")
+        print("WebViewWrapperDelegate.webView(_:,shouldStartLoadWithRequest:,navigationType:): \(x) \(urlString!)")
         return x
     }
     

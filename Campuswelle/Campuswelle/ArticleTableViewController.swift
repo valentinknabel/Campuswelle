@@ -16,10 +16,10 @@ class ArticleTableViewController: UITableViewController {
         fetchNews(success: { (n) -> () in
             self.news = n
             self.tableView.reloadData()
-            print("LOG: news reloaded")
+            print("ArticleTableViewController.tryReload: news reloaded")
             
             }) { (error) -> () in
-                print("LOG: \(error)")
+                print("ArticleTableViewController.tryReload: \(error)")
                 delay(10) {
                     self.tryReload()
                 }

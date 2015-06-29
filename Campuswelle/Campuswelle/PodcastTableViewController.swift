@@ -16,10 +16,10 @@ class PodcastTableViewController: UITableViewController {
         fetchPodcasts(success: { (p) -> () in
             self.podcasts = p
             self.tableView.reloadData()
-            print("LOG: news reloaded")
+            print("PodcastTableViewController.tryReload: news reloaded")
             
             }) { (error) -> () in
-                print("LOG: \(error)")
+                print("PodcastTableViewController.tryReload: \(error)")
                 delay(10) {
                     self.tryReload()
                 }

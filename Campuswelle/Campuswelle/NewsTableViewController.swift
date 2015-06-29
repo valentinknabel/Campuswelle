@@ -16,10 +16,10 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
         fetchNews(success: { (n) -> () in
             self.news = n
             self.tableView.reloadData()
-            print("LOG: news reloaded")
+            print("NewsTableViewController.tryReload: news reloaded")
             
             }) { (error) -> () in
-                print("LOG: \(error)")
+                print("NewsTableViewController.tryReload: \(error)")
                 delay(5) {
                     self.tryReload()
                 }
