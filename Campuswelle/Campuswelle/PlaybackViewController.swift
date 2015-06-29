@@ -37,6 +37,7 @@ class PlaybackViewController: UIViewController {
     @IBOutlet weak var blurImageView: UIImageView!
     @IBOutlet weak var audioSlider: MPVolumeView!
     @IBOutlet weak var podcastProgress: UIProgressView!
+    @IBOutlet weak var podcastSlider: UISlider!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subLabel: UILabel?
     @IBOutlet weak var autoplayButton: UIButton!
@@ -81,6 +82,7 @@ class PlaybackViewController: UIViewController {
             }
             rewindButton.enabled = forward
             forwardButton.enabled = forward
+            podcastSlider.enabled = forward
         }
         
         switch PodcastPlayer.sharedInstance.status {
@@ -133,11 +135,17 @@ class PlaybackViewController: UIViewController {
         // set time
         if let (current, limit) = pair {
             self.podcastProgress.progress = Float(current/limit)
+            self.podcastSlider.value = Float(current/limit)
             self.currentLabel.text = timeString(current)
             self.limitLabel.text = timeString(limit)
+            
+            delay(1) {
+                self.refreshButtons()
+            }
         }
         else {
             self.podcastProgress.progress = 0.0
+            self.podcastSlider.value = 0.0
             self.currentLabel.text = ""
             self.limitLabel.text = ""
         }
@@ -153,6 +161,7 @@ class PlaybackViewController: UIViewController {
             self.titleLabel.text = p.article.title
             self.subLabel?.text = "Campuswelle"
         }
+
     }
     
     private func titleObserver(title: String?) {
@@ -174,6 +183,9 @@ class PlaybackViewController: UIViewController {
         }
     }
     
+    @IBAction func progressChanged(sender: UISlider) {
+        PodcastPlayer.sharedInstance.seekAbsolute(sender.value)
+    }
 
     /*
     // MARK: - Navigation

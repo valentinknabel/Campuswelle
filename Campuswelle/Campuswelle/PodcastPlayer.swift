@@ -174,6 +174,17 @@ public extension PodcastPlayer {
         sender?.becomeFirstResponder()
     }
     
+    public func seekAbsolute(percent: Float) {
+        guard let limit = self.player?.currentItem?.duration
+            where limit != kCMTimeIndefinite && percent >= 0.0 && percent <= 1.0
+            else { return }
+        let seconds = Float(limit.seconds) * percent
+        let targetTime = CMTimeMake(Int64(seconds), 1)
+        player?.seekToTime(targetTime) { b in
+            print(b)
+        }
+    }
+    
     /// Performs a step rewind.
     public func seekRelative(timeInterval: NSTimeInterval) {
         let current = player?.currentTime() ?? CMTimeMake(0, 0)
