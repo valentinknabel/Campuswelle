@@ -27,7 +27,7 @@ func toArticle(item: BNRSSFeedItem) -> Article {
     
     return Article(title: item.title,
         link: item.link,
-        desc: item.description,
+        desc: htmlInnerStringMapper(contentHtmlMapper(item.description)),
         categories: item.categories as! [String],
         content: fixedContent,
         imageUrls: images,

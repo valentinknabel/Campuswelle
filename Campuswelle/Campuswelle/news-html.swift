@@ -34,6 +34,18 @@ func htmlVideoMapper(document: TFHpple) -> [NSURL] {
     return result
 }
 
+func htmlInnerStringMapper(document: TFHpple) -> String {
+    func elementConcat(element: TFHppleElement) -> String {
+        guard !element.isTextNode() else {
+            return element.content
+        }
+        return element.children.reduce("") { str, el in
+            return str + elementConcat(el as! TFHppleElement)
+        }
+    }
+    return (document.searchWithXPathQuery("/") as! [TFHppleElement]).map(elementConcat).reduce("", combine: +)
+}
+
 func removeImages(document: TFHpple) {
     
 }
