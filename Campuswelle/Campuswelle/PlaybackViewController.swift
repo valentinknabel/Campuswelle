@@ -108,6 +108,11 @@ class PlaybackViewController: UIViewController {
         //audioSlider.setMinimumVolumeSliderImage(UIImage(assetIdentifier: .VolumeMin), forState: .Normal)
         //audioSlider.setMaximumVolumeSliderImage(UIImage(assetIdentifier: .VolumeMax), forState: .Normal)
         
+        self.podcast?.article.image(0) {
+            guard let image = $0 else { return }
+            self.imageView.image = image
+        }
+        
         secondsObserver(nil)
         PodcastPlayer.sharedInstance.secondsObserver = secondsObserver
         

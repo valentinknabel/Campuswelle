@@ -59,10 +59,16 @@ class PodcastTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("podcastCell", forIndexPath: indexPath) as UITableViewCell
-
+        let pod = podcasts[indexPath.row]
+        
         // Configure the cell...
-        cell.textLabel?.text = podcasts[indexPath.row].subtitle
-        cell.detailTextLabel?.text = podcasts[indexPath.row].article.title
+        cell.textLabel?.text = pod.subtitle
+        cell.detailTextLabel?.text = pod.article.title
+        
+        pod.article.image(0) {
+            guard let image = $0 else { return }
+            cell.imageView?.image = image
+        }
         
         return cell
     }

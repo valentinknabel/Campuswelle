@@ -16,3 +16,11 @@ func delay(delay:Double, closure:()->()) {
         ),
         dispatch_get_main_queue(), closure)
 }
+
+func async(closure:()->()) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), closure)
+}
+
+func main(closure:()->()) {
+    dispatch_async(dispatch_get_main_queue(), closure)
+}

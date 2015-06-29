@@ -14,6 +14,8 @@ public protocol News {
 
 public struct Article: News, CustomStringConvertible {
     
+    private static let imageCache: NSCache = NSCache()
+    
     public var article: Article {
         return self
     }
@@ -29,5 +31,33 @@ public struct Article: News, CustomStringConvertible {
     
     public var description: String {
         return "A: \(title)"
+    }
+}
+
+import UIKit
+
+public extension Article {
+    
+    public func image(index: Int, callback: (UIImage?) -> Void) {
+        guard self.imageUrls.count > 0 else {
+            callback(nil)
+            return
+        }
+        
+        let url = self.imageUrls[index]
+        let key = url.absoluteString
+        if let img = Article.imageCache.objectForKey(key) as? UIImage {
+            callback(img)
+        }
+        else {
+            async {
+                guard let data = NSData(contentsOfURL: url),
+                    let img = UIImage(data: data)
+                    else { callback(nil);return }
+                Article.imageCache.setObject(img, forKey: key)
+                callback(img)
+            }
+            
+        }
     }
 }
