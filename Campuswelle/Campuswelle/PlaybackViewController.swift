@@ -46,7 +46,7 @@ class PlaybackViewController: UIViewController {
     
     
     @IBAction func seekBackward() {
-        PodcastPlayer.sharedInstance.seekRelative(-15)
+        PodcastPlayer.sharedInstance.seekRelative(-PodcastPlayer.DefaultSeekInterval)
     }
     @IBAction func play() {
         PodcastPlayer.sharedInstance.play()
@@ -57,7 +57,7 @@ class PlaybackViewController: UIViewController {
         refreshButtons()
     }
     @IBAction func seekForward() {
-        PodcastPlayer.sharedInstance.seekRelative(15)
+        PodcastPlayer.sharedInstance.seekRelative(PodcastPlayer.DefaultSeekInterval)
     }
     
     @IBAction func toggleAutoplay(sender: UIButton) {

@@ -27,6 +27,8 @@ public class PodcastPlayer {
     public static var sharedInstance: PodcastPlayer {
         return _sharedInstance ?? PodcastPlayer()
     }
+    private let rcc = MPRemoteCommandCenter.sharedCommandCenter()
+    
     
     /// Instances of this class shall only be instantiated from inside this class.
     private init() {
@@ -185,8 +187,10 @@ public extension PodcastPlayer {
         }
     }
     
+    public static let DefaultSeekInterval: NSTimeInterval = 30
+    
     /// Performs a step rewind.
-    public func seekRelative(timeInterval: NSTimeInterval) {
+    public func seekRelative(timeInterval: NSTimeInterval = DefaultSeekInterval) {
         let current = player?.currentTime() ?? CMTimeMake(0, 0)
         let targetTime = CMTimeMake(Int64(current.seconds + timeInterval), 1)
         player?.seekToTime(targetTime) { b in
@@ -248,6 +252,54 @@ private extension PodcastPlayer {
         catch {
             print("PodcastPlayer.prepare \(error)")
         }
+        
+        // init rcc
+        //skip forward
+        do {
+            let skipForward = rcc.skipForwardCommand
+            skipForward.enabled = false
+            skipForward.preferredIntervals = [PodcastPlayer.DefaultSeekInterval]
+            skipForward.addTargetWithHandler { (event) -> MPRemoteCommandHandlerStatus in
+                guard let skipEvent = event as? MPSkipIntervalCommandEvent
+                    else { return .CommandFailed }
+                self.seekRelative(skipEvent.interval)
+                return MPRemoteCommandHandlerStatus.Success
+            }
+        }
+        
+        // skip backward
+        do {
+            let skipBackward = rcc.skipBackwardCommand
+            skipBackward.preferredIntervals = [PodcastPlayer.DefaultSeekInterval]
+            skipBackward.enabled = false
+            skipBackward.addTargetWithHandler { (event) -> MPRemoteCommandHandlerStatus in
+                guard let skipEvent = event as? MPSkipIntervalCommandEvent
+                    else { return .CommandFailed }
+                self.seekRelative(-skipEvent.interval)
+                return MPRemoteCommandHandlerStatus.Success
+            }
+        }
+        
+        // pause
+        do {
+            let pause = rcc.pauseCommand
+            pause.enabled = false
+            pause.addTargetWithHandler { (event) -> MPRemoteCommandHandlerStatus in
+                self.pause()
+                return MPRemoteCommandHandlerStatus.Success
+            }
+        }
+        
+        // play
+        do {
+            let play = rcc.pauseCommand
+            play.enabled = false
+            play.addTargetWithHandler { (event) -> MPRemoteCommandHandlerStatus in
+                self.play()
+                return MPRemoteCommandHandlerStatus.Success
+            }
+        }
+        
     }
     
     /// Updates the info center.
@@ -255,6 +307,13 @@ private extension PodcastPlayer {
         switch currentItem {
         case .EmptyItem:
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = nil
+            
+            // remote controls
+            rcc.skipBackwardCommand.enabled = false
+            rcc.skipForwardCommand.enabled = false
+            rcc.pauseCommand.enabled = false
+            rcc.playCommand.enabled = false
+            
         case .LiveStreamItem:
             let artwork = MPMediaItemArtwork(image: UIImage(assetIdentifier: UIImage.AssetIdentifier.DefaultCover))
             let currentlyPlayingTrackInfo = [
@@ -264,6 +323,13 @@ private extension PodcastPlayer {
                 MPMediaItemPropertyMediaType: MPMediaType.AnyAudio.rawValue
             ]
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
+            
+            // remote controls
+            rcc.skipBackwardCommand.enabled = false
+            rcc.skipForwardCommand.enabled = false
+            rcc.pauseCommand.enabled = true
+            rcc.playCommand.enabled = true
+            
         case .PodcastItem(let pod):
             let artwork = MPMediaItemArtwork(image: UIImage(assetIdentifier: UIImage.AssetIdentifier.DefaultCover))
             let currentlyPlayingTrackInfo = [
@@ -273,6 +339,12 @@ private extension PodcastPlayer {
                 MPMediaItemPropertyMediaType: MPMediaType.Podcast.rawValue
             ]
             MPNowPlayingInfoCenter.defaultCenter().nowPlayingInfo = currentlyPlayingTrackInfo
+            
+            // remote controls
+            rcc.skipBackwardCommand.enabled = true
+            rcc.skipForwardCommand.enabled = true
+            rcc.pauseCommand.enabled = true
+            rcc.playCommand.enabled = true
         }
     }
     
