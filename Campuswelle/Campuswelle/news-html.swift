@@ -43,7 +43,8 @@ func htmlInnerStringMapper(document: TFHpple) -> String {
             return str + elementConcat(el as! TFHppleElement)
         }
     }
-    return (document.searchWithXPathQuery("/") as! [TFHppleElement]).map(elementConcat).reduce("", combine: +)
+    let roots = document.searchWithXPathQuery("/html/body") as? [TFHppleElement]
+    return roots?.map(elementConcat).reduce("", combine: +) ?? ""
 }
 
 func removeImages(document: TFHpple) {
