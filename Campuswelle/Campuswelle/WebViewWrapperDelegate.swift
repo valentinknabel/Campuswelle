@@ -10,6 +10,8 @@ import UIKit
 
 class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
     
+    private var newsLink: NSURL?
+    
     @IBOutlet var webView: UIWebView! {
         willSet {
             newValue.delegate = self
@@ -21,6 +23,7 @@ class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
     }
     
     func setContent(news news: News) {
+        newsLink = news.article.link
         let content = prepareHTML(news)
         webView.loadHTMLString(content, baseURL: news.article.link)
     }
@@ -38,10 +41,27 @@ class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        let urlString = request.URL?.absoluteString
+        /*let urlString = request.URL?.absoluteString
         let x = urlString?.rangeOfString("http://campuswelle.uni-ulm.de/") != nil
         print("WebViewWrapperDelegate.webView(_:,shouldStartLoadWithRequest:,navigationType:): \(x) \(urlString!)")
-        return x
+        return x*/
+        
+        switch navigationType {
+        case .Reload:
+            break
+        case .Other:
+            break
+        case .LinkClicked:
+            break
+        default:
+            break
+        }
+        
+        guard navigationType == UIWebViewNavigationType.Other && newsLink == request.URL else {
+            UIApplication.sharedApplication().openURL(request.URL!)
+            return false
+        }
+        return true
     }
     
 }
