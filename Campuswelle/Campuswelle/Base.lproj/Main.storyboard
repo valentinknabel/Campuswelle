@@ -150,15 +150,7 @@
                             <outlet property="delegate" destination="kj7-i4-Kfx" id="rLc-5C-fh4"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="6UB-QS-Tu3"/>
-                        <barButtonItem title="Now playing" id="Vm9-Eh-U0C">
-                            <connections>
-                                <segue destination="Shj-CY-T4B" kind="presentation" identifier="ShowPlaybackSegue" id="g1t-Ul-6TT"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="C9Q-Ra-xaA"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Campuswelle" id="TPv-W5-fWM">
                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="04B-Ig-fac">
                             <connections>
@@ -175,6 +167,7 @@
         <scene sceneID="3Wd-xh-ajG">
             <objects>
                 <navigationController toolbarHidden="NO" id="yMS-In-MLV" sceneMemberID="viewController">
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Cg-R1-rqE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -185,12 +178,22 @@
                         <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="wla-3Z-rQm" appends="YES" id="RYq-mB-n3Q"/>
+                        </connections>
                     </toolbar>
                     <connections>
                         <segue destination="kj7-i4-Kfx" kind="relationship" relationship="rootViewController" id="TfQ-1t-wsT"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Vk-IR-YIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="up" id="wla-3Z-rQm">
+                    <pressTypeMask key="allowedPressTypes"/>
+                    <connections>
+                        <segue destination="Shj-CY-T4B" kind="presentation" id="PnC-HO-urU"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1222" y="-1368"/>
         </scene>
@@ -221,17 +224,10 @@
                             <constraint firstAttribute="centerY" secondItem="c1p-15-Ipz" secondAttribute="centerY" id="sr9-Y3-BnS"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="abd-a2-43F"/>
-                        <barButtonItem title="Play this Podcast" id="xJ2-qg-6oL">
-                            <connections>
-                                <segue destination="Shj-CY-T4B" kind="presentation" identifier="PlayPodcastSegue" id="ZZo-3G-Dnl"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="B5q-zt-lAy"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <connections>
                         <outlet property="webView" destination="c1p-15-Ipz" id="Fjj-Eb-HeW"/>
+                        <segue destination="Shj-CY-T4B" kind="presentation" identifier="PlayPodcastSegue" id="v48-7O-bej"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1vQ-sw-cX0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -253,6 +249,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default-cover" translatesAutoresizingMaskIntoConstraints="NO" id="PBH-v0-9k6">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                 <animations/>
+                                <gestureRecognizers/>
                             </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgK-Mk-6Li">
                                 <rect key="frame" x="16" y="30" width="25" height="25"/>
@@ -367,6 +364,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="JWB-h9-9ir" secondAttribute="trailing" id="INh-mp-MAf"/>
                             <constraint firstItem="JWB-h9-9ir" firstAttribute="leading" secondItem="BBM-vi-vNO" secondAttribute="leadingMargin" constant="-4" id="csI-kA-Ygz"/>
                             <constraint firstItem="wgK-Mk-6Li" firstAttribute="top" secondItem="nFo-yI-Gxz" secondAttribute="bottom" constant="10" id="cvT-Qi-cYq"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="JWB-h9-9ir" secondAttribute="leading" id="ftr-4K-sA6"/>
                             <constraint firstItem="JWB-h9-9ir" firstAttribute="centerX" secondItem="BBM-vi-vNO" secondAttribute="centerX" id="kmY-Gm-QRx"/>
                             <constraint firstItem="JWB-h9-9ir" firstAttribute="centerX" secondItem="BBM-vi-vNO" secondAttribute="centerX" id="rGE-aI-cYz"/>
                             <constraint firstAttribute="leadingMargin" secondItem="wgK-Mk-6Li" secondAttribute="leading" id="wWw-i6-zxk"/>
@@ -380,6 +378,9 @@
                                 <exclude reference="rGE-aI-cYz"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="6FJ-fG-Ggi" appends="YES" id="Mqx-Iq-TDh"/>
+                        </connections>
                     </view>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -400,6 +401,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="np4-Lf-eOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="down" id="6FJ-fG-Ggi">
+                    <pressTypeMask key="allowedPressTypes"/>
+                    <connections>
+                        <action selector="unwindSegue:" destination="Shj-CY-T4B" id="AW2-4k-bF0"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2000" y="-215"/>
         </scene>
@@ -415,7 +422,7 @@
         <image name="ios7-volume-low" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="s11-Ng-0cH"/>
+        <segue reference="v48-7O-bej"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

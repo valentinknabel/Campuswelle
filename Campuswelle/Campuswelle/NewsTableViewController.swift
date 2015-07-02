@@ -11,6 +11,7 @@ import UIKit
 class NewsTableViewController: UITableViewController, SegueHandlerType {
 
     var news: [News] = []
+    var toolBarController: AnyObject?
     
     func tryReload() {
         fetchNews(success: { (n) -> () in
@@ -31,7 +32,8 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        toolBarController = preparePlaybackBar(self)
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.tryReload()

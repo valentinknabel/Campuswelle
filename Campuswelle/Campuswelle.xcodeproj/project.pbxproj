@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		ABCE9E8CE382E6EB3055632C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FCF13BD47C1A26E91BC98 /* libPods.a */; };
+		DA0B83AF1B45A20500C291A1 /* PlaybackBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0B83AD1B45A20500C291A1 /* PlaybackBarViewController.swift */; };
+		DA0B83B01B45A20500C291A1 /* PlaybackBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA0B83AE1B45A20500C291A1 /* PlaybackBarViewController.xib */; };
 		DA1E7A721B0CD29B00263026 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A711B0CD29B00263026 /* NewsTableViewController.swift */; };
 		DA1E7A741B0CD3B500263026 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A731B0CD3B500263026 /* NewsViewController.swift */; };
 		DA34AF5A1AFA3E0C0064B45E /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA34AF591AFA3E0C0064B45E /* libxml2.2.dylib */; };
@@ -58,6 +60,8 @@
 		282FCF13BD47C1A26E91BC98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C286C656F7E7666AB413866E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DA04DFB41B2AEB630085C88A /* Campuswelle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Campuswelle.entitlements; sourceTree = "<group>"; };
+		DA0B83AD1B45A20500C291A1 /* PlaybackBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackBarViewController.swift; sourceTree = "<group>"; };
+		DA0B83AE1B45A20500C291A1 /* PlaybackBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaybackBarViewController.xib; sourceTree = "<group>"; };
 		DA1E7A711B0CD29B00263026 /* NewsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		DA1E7A731B0CD3B500263026 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		DA1E7A751B0CE58500263026 /* structural-fold-phase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "structural-fold-phase.swift"; sourceTree = "<group>"; };
@@ -297,6 +301,8 @@
 			isa = PBXGroup;
 			children = (
 				DA759DD51AE2F7E200746678 /* PlaybackViewController.swift */,
+				DA0B83AD1B45A20500C291A1 /* PlaybackBarViewController.swift */,
+				DA0B83AE1B45A20500C291A1 /* PlaybackBarViewController.xib */,
 			);
 			name = Podcast;
 			sourceTree = "<group>";
@@ -399,6 +405,7 @@
 				DA759DD11AE2ED9A00746678 /* wrapper.html in Resources */,
 				DA5AD6D21ADFF70E00C740E6 /* Main.storyboard in Resources */,
 				DA5AD6D71ADFF70E00C740E6 /* LaunchScreen.xib in Resources */,
+				DA0B83B01B45A20500C291A1 /* PlaybackBarViewController.xib in Resources */,
 				DA5AD6ED1ADFF71A00C740E6 /* Cartfile in Resources */,
 				DA5AD6D41ADFF70E00C740E6 /* Images.xcassets in Resources */,
 			);
@@ -466,6 +473,7 @@
 				DA34AF641AFA3F0B0064B45E /* TFHpple.m in Sources */,
 				DA6E8DB81AE026DD0075525C /* Podcast.swift in Sources */,
 				DA6E8DAF1ADFFF1C0075525C /* album-data.swift in Sources */,
+				DA0B83AF1B45A20500C291A1 /* PlaybackBarViewController.swift in Sources */,
 				DA759DDE1AE330AE00746678 /* PodcastPlayer.swift in Sources */,
 				DACCB3911B2B14CB001A671C /* SegueHandlerType.swift in Sources */,
 				DA6E8DAB1ADFFEFE0075525C /* podcast-data.swift in Sources */,

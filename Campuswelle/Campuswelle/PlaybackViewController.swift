@@ -64,7 +64,7 @@ class PlaybackViewController: UIViewController {
         
     }
     
-    @IBAction func unwindSegue(sender: UIButton) {
+    @IBAction func unwindSegue(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

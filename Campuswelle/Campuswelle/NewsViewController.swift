@@ -9,7 +9,8 @@
 import UIKit
 
 class NewsViewController: UIViewController, SegueHandlerType {
-    
+
+    var toolBarController: AnyObject?
     var news: News!
     @IBOutlet var webView: UIWebView!
     var contentWrapper = WebViewWrapperDelegate()
@@ -25,15 +26,28 @@ class NewsViewController: UIViewController, SegueHandlerType {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        toolBarController = preparePlaybackBar(self)
+        
         // Do any additional setup after loading the view.
         //self.navigationItem.title = article.title
         
         contentWrapper.webView = webView
         contentWrapper.setContent(news: news)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action,
-            target: self,
-            action: Selector("shareAction"))
+        var items: [UIBarButtonItem] = [
+            UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action,
+                target: self,
+                action: Selector("shareAction"))
+        ]
+        if let _ = news as? Podcast {
+            items.append(
+                UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Play,
+                    target: self,
+                    action: Selector("performPlayPodcastSegue"))
+            )
+        }
+        
+        self.navigationItem.setRightBarButtonItems(items, animated: false)
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,6 +57,10 @@ class NewsViewController: UIViewController, SegueHandlerType {
 
     // MARK: - Navigation
 
+    func performPlayPodcastSegue() {
+        self.performSegueWithIdentifier(SegueIdentifier.PlayPodcastSegue.rawValue, sender: self)
+    }
+    
     enum SegueIdentifier: String {
         case PlayPodcastSegue = "PlayPodcastSegue"
     }

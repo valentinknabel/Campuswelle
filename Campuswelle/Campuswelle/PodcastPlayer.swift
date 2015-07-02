@@ -72,6 +72,11 @@ public class PodcastPlayer {
         }
     }
     
+    private var _progress: Double = 0.0
+    public var progress: Double {
+        return _progress
+    }
+    
     /// Set this property to receive time updates.
     public var secondsObserver: ((Double, Double)? -> Void)?  {
         didSet {
@@ -81,8 +86,9 @@ public class PodcastPlayer {
                 guard let limit = self.player?.currentItem?.duration,
                     current = self.player?.currentTime()
                     where limit != kCMTimeIndefinite
-                    else { new(nil);return }
+                    else { self._progress = 0.0;new(nil);return }
 
+                self._progress = current.seconds / limit.seconds
                 new((current.seconds, limit.seconds))
             }
         }
@@ -110,12 +116,15 @@ public class PodcastPlayer {
     }
     
     /// Stores the least recent title. May not be the current item's title.
-    private var leastRecentTitle: String?
+    private var _leastRecentTitle: String?
+    public var leastRecentTitle: String? {
+        return _leastRecentTitle
+    }
     
     /// Stores an observer for a given title.
     public var titleObserver: ((String?) -> Void)? {
         didSet {
-            titleObserver?(leastRecentTitle)
+            titleObserver?(_leastRecentTitle)
         }
     }
     private var titleTimer: NSTimer?
@@ -224,7 +233,7 @@ public extension PodcastPlayer {
                     print("PodcastPlayer.refreshTitle: Invalid server data")
                     return
             }
-            self.leastRecentTitle = title
+            self._leastRecentTitle = title
             titleObserver?(title)
             
             /// succeeded
@@ -318,7 +327,7 @@ private extension PodcastPlayer {
             let artwork = MPMediaItemArtwork(image: UIImage(assetIdentifier: UIImage.AssetIdentifier.DefaultCover))
             let currentlyPlayingTrackInfo = [
                 MPMediaItemPropertyArtist: "Campuswelle Live",
-                MPMediaItemPropertyTitle: leastRecentTitle ?? "",
+                MPMediaItemPropertyTitle: _leastRecentTitle ?? "",
                 MPMediaItemPropertyArtwork: artwork,
                 MPMediaItemPropertyMediaType: MPMediaType.AnyAudio.rawValue
             ]
