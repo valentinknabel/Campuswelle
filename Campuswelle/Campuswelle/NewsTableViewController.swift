@@ -55,6 +55,26 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
         // Return the number of rows in the section.
         return news.count
     }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        func height(string: NSString, fontSize: CGFloat) -> CGFloat {
+            let bounds = CGSize(width: self.tableView.frame.width - 73 - 55, height: CGFloat.max)
+            
+            let attributes = [NSFontAttributeName: UIFont.systemFontOfSize(fontSize)]
+            let size = string.boundingRectWithSize(bounds,
+                options: NSStringDrawingOptions.UsesLineFragmentOrigin.union(NSStringDrawingOptions.TruncatesLastVisibleLine),
+                attributes: attributes,
+                context: nil)
+            return ceil(size.height)
+        }
+        
+        let some = news[indexPath.row]
+        let titleHeight = height(some.article.title, fontSize: 16.0 + 4.0)
+        let descHeight = height(some.article.description, fontSize: 11.0 + 2.5)
+        
+        let result = 5 + min(ceil(titleHeight), 40) + 5 + min(ceil(descHeight), 28)
+        return result
+    }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("newsCell", forIndexPath: indexPath) as UITableViewCell
@@ -62,6 +82,23 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
         // Configure the cell...
         cell.textLabel?.text = news[indexPath.row].article.title
         cell.detailTextLabel?.text = news[indexPath.row].article.desc
+        
+        func setCellImage(image: UIImage) {
+            let imageSize = CGSizeMake(43, 43)
+            UIGraphicsBeginImageContextWithOptions(imageSize, true, UIScreen.mainScreen().scale)
+            let imageRect = CGRectMake(0.0, 0.0, imageSize.width, imageSize.height)
+            cell.imageView?.image?.drawInRect(imageRect)
+            cell.imageView?.image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+        }
+        
+        news[indexPath.row].article.image(0) {
+            guard let image = $0 else {
+                setCellImage(cell.imageView!.image!)
+                return
+            }
+            setCellImage(image)
+        }
         
         return cell
     }
