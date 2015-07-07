@@ -55,6 +55,14 @@ class PlaybackBarViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func play() {
+        PodcastPlayer.sharedInstance.play()
+    }
+    
+    @IBAction func pause() {
+        PodcastPlayer.sharedInstance.pause()
+    }
+    
     func refresh() {
         
         let p = PodcastPlayer.sharedInstance

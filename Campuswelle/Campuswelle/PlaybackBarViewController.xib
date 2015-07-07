@@ -21,21 +21,21 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="default-cover" translatesAutoresizingMaskIntoConstraints="NO" id="yro-Vd-SLk">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default-cover" translatesAutoresizingMaskIntoConstraints="NO" id="yro-Vd-SLk">
                     <rect key="frame" x="0.0" y="1" width="44" height="44"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="yro-Vd-SLk" secondAttribute="height" multiplier="1:1" id="K0x-J3-gx3"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="At6-lL-FbH">
-                    <rect key="frame" x="52" y="12" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="At6-lL-FbH">
+                    <rect key="frame" x="52" y="7" width="29" height="14"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psQ-ME-gHn" userLabel="play">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psQ-ME-gHn" userLabel="play">
                     <rect key="frame" x="562" y="7" width="30" height="30"/>
                     <animations/>
                     <constraints>
@@ -43,8 +43,11 @@
                         <constraint firstAttribute="width" constant="30" id="McZ-Qx-uTs"/>
                     </constraints>
                     <state key="normal" image="ios7-play"/>
+                    <connections>
+                        <action selector="play" destination="-1" eventType="touchUpInside" id="A16-Lf-qCY"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQg-1G-ERX" userLabel="pause">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQg-1G-ERX" userLabel="pause">
                     <rect key="frame" x="562" y="7" width="30" height="30"/>
                     <animations/>
                     <constraints>
@@ -52,31 +55,43 @@
                         <constraint firstAttribute="width" constant="30" id="cqO-rI-xwx"/>
                     </constraints>
                     <state key="normal" image="ios7-pause"/>
+                    <connections>
+                        <action selector="pause" destination="-1" eventType="touchUpInside" id="WQZ-Uw-Hfd"/>
+                    </connections>
                 </button>
                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="Cuw-Ob-HoR">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="3"/>
                     <animations/>
                 </progressView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campuswelle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4Z-0b-MMS">
+                    <rect key="frame" x="52" y="22" width="70" height="14"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Cuw-Ob-HoR" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="7ib-JH-T1x"/>
-                <constraint firstItem="yro-Vd-SLk" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="BiI-jT-dTc"/>
-                <constraint firstItem="NQg-1G-ERX" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="G3c-eu-gsq"/>
+                <constraint firstItem="yro-Vd-SLk" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="2" id="BiI-jT-dTc"/>
+                <constraint firstItem="NQg-1G-ERX" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="1" id="G3c-eu-gsq"/>
                 <constraint firstAttribute="trailing" secondItem="NQg-1G-ERX" secondAttribute="trailing" constant="8" id="K1M-VO-GoG"/>
                 <constraint firstItem="At6-lL-FbH" firstAttribute="leading" secondItem="yro-Vd-SLk" secondAttribute="trailing" constant="8" id="VF0-ND-BfD"/>
                 <constraint firstItem="Cuw-Ob-HoR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VSQ-k9-wCX"/>
                 <constraint firstItem="Cuw-Ob-HoR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YkB-tE-YbG"/>
+                <constraint firstItem="w4Z-0b-MMS" firstAttribute="leading" secondItem="At6-lL-FbH" secondAttribute="leading" id="Z4y-0S-3Tb"/>
                 <constraint firstItem="yro-Vd-SLk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Zs7-bu-YoK"/>
-                <constraint firstItem="yro-Vd-SLk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="iKY-ev-rjl"/>
+                <constraint firstItem="yro-Vd-SLk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" constant="2" id="iKY-ev-rjl"/>
                 <constraint firstAttribute="trailing" secondItem="psQ-ME-gHn" secondAttribute="trailing" constant="8" id="jtS-IR-COv"/>
-                <constraint firstItem="psQ-ME-gHn" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="lth-db-sFs"/>
+                <constraint firstItem="psQ-ME-gHn" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="1" id="lth-db-sFs"/>
                 <constraint firstItem="NQg-1G-ERX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="At6-lL-FbH" secondAttribute="trailing" constant="8" symbolic="YES" id="ogb-Q8-kjt"/>
-                <constraint firstItem="At6-lL-FbH" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="s0y-kL-HBQ"/>
+                <constraint firstItem="At6-lL-FbH" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-7.5" id="s0y-kL-HBQ"/>
+                <constraint firstItem="w4Z-0b-MMS" firstAttribute="top" secondItem="At6-lL-FbH" secondAttribute="bottom" constant="1" id="vQc-gE-pU0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="433" y="597.5"/>
+            <point key="canvasLocation" x="418" y="584"/>
         </view>
     </objects>
     <resources>

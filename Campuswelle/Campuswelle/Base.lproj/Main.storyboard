@@ -181,6 +181,7 @@
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="wla-3Z-rQm" appends="YES" id="RYq-mB-n3Q"/>
+                            <outletCollection property="gestureRecognizers" destination="8FY-sD-xbS" appends="YES" id="2nS-iR-vWx"/>
                         </connections>
                     </toolbar>
                     <connections>
@@ -194,6 +195,12 @@
                         <segue destination="Shj-CY-T4B" kind="presentation" id="PnC-HO-urU"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="8FY-sD-xbS">
+                    <pressTypeMask key="allowedPressTypes"/>
+                    <connections>
+                        <segue destination="Shj-CY-T4B" kind="presentation" id="bpo-tF-Vs7"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1222" y="-1368"/>
         </scene>
@@ -316,7 +323,7 @@
                                     <action selector="pause" destination="Shj-CY-T4B" eventType="touchUpInside" id="ijb-Ag-uwR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXu-xv-8gm">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXu-xv-8gm">
                                 <rect key="frame" x="143" y="389" width="30" height="30"/>
                                 <animations/>
                                 <state key="normal" image="ios7-play"/>
@@ -348,6 +355,14 @@
                                 <rect key="frame" x="20" y="427" width="280" height="22"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="wgI-RC-ngI"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="wgI-RC-ngI"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jjg-dQ-JWn">
                                 <rect key="frame" x="-2" y="304" width="324" height="31"/>
@@ -361,7 +376,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JWB-h9-9ir" firstAttribute="centerY" secondItem="BBM-vi-vNO" secondAttribute="centerY" id="8Lf-nr-B3w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JWB-h9-9ir" secondAttribute="trailing" id="8s0-FP-nUa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JWB-h9-9ir" secondAttribute="trailing" id="INh-mp-MAf"/>
+                            <constraint firstItem="JWB-h9-9ir" firstAttribute="top" secondItem="cXu-xv-8gm" secondAttribute="bottom" constant="8" id="XYL-rj-Yy5"/>
                             <constraint firstItem="JWB-h9-9ir" firstAttribute="leading" secondItem="BBM-vi-vNO" secondAttribute="leadingMargin" constant="-4" id="csI-kA-Ygz"/>
                             <constraint firstItem="wgK-Mk-6Li" firstAttribute="top" secondItem="nFo-yI-Gxz" secondAttribute="bottom" constant="10" id="cvT-Qi-cYq"/>
                             <constraint firstAttribute="leadingMargin" secondItem="JWB-h9-9ir" secondAttribute="leading" id="ftr-4K-sA6"/>
@@ -372,8 +389,11 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="8Lf-nr-B3w"/>
+                                <exclude reference="8s0-FP-nUa"/>
                                 <exclude reference="INh-mp-MAf"/>
+                                <exclude reference="XYL-rj-Yy5"/>
                                 <exclude reference="csI-kA-Ygz"/>
+                                <exclude reference="ftr-4K-sA6"/>
                                 <exclude reference="kmY-Gm-QRx"/>
                                 <exclude reference="rGE-aI-cYz"/>
                             </mask>
@@ -422,7 +442,7 @@
         <image name="ios7-volume-low" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="v48-7O-bej"/>
+        <segue reference="bpo-tF-Vs7"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

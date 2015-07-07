@@ -14,15 +14,27 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
     var toolBarController: AnyObject?
     
     func tryReload() {
+        tryReload(true)
+    }
+    
+    func tryReload(long: Bool) {
+        refreshControl?.beginRefreshing()
+        if !long {
+            refreshControl?.attributedTitle = NSAttributedString(string: "Lädt")
+        }
+            
         fetchNews(success: { (n) -> () in
             self.news = n
             self.tableView.reloadData()
             print("NewsTableViewController.tryReload: news reloaded")
+            self.refreshControl?.endRefreshing()
+            self.refreshControl?.attributedTitle = NSAttributedString(string: "Erneut laden")
             
             }) { (error) -> () in
                 print("NewsTableViewController.tryReload: \(error)")
-                delay(5) {
-                    self.tryReload()
+                self.refreshControl?.attributedTitle = NSAttributedString(string: "Laden dauert lange")
+                delay(1) {
+                    self.tryReload(true)
                 }
         }
     }
@@ -33,6 +45,9 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         toolBarController = preparePlaybackBar(self)
+        refreshControl = UIRefreshControl()
+        self.refreshControl?.attributedTitle = NSAttributedString(string: "Erneut laden")
+        self.refreshControl?.addTarget(self, action: "tryReload", forControlEvents: UIControlEvents.ValueChanged)
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
