@@ -12,6 +12,7 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
 
     var news: [News] = []
     var toolBarController: AnyObject?
+    var selectedPodcast: Podcast?
     
     func tryReload() {
         tryReload(true)
@@ -92,13 +93,30 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
         let result = 5 + min(ceil(titleHeight), 40) + 5 + min(ceil(descHeight), 28)
         return result
     }
-
+    
+    func playAccessoryButtonTapped(button: UIButton, withEvent event: UIEvent) {
+        let indexPath = tableView.indexPathForRowAtPoint(event.touchesForView(button)!.first!.locationInView(tableView))!
+        
+        if let pod = news[indexPath.row] as? Podcast {
+            selectedPodcast = pod
+            performSegueWithIdentifier(SegueIdentifier.DirectPlayPodcastSegue.rawValue, sender: button)
+        }
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("newsCell", forIndexPath: indexPath) as UITableViewCell
         
         // Configure the cell...
         cell.textLabel?.text = news[indexPath.row].article.title
         cell.detailTextLabel?.text = news[indexPath.row].article.desc
+        
+        if let pod = news[indexPath.row] as? Podcast {
+            let button = UIButton(type: UIButtonType.System)
+            button.setImage(UIImage(assetIdentifier: UIImage.AssetIdentifier.Play), forState: .Normal)
+            cell.accessoryView = button
+            button.frame = CGRect(x: 0, y: 0, width: 22, height: 22)
+            button.addTarget(self, action: "playAccessoryButtonTapped:withEvent:", forControlEvents: UIControlEvents.TouchUpInside)
+        }
         
         func setCellImage(image: UIImage) {
             let imageSize = CGSizeMake(43, 43)
@@ -161,6 +179,7 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
         case PlayLiveSegue = "PlayLiveSegue"
         case ShowArticleSegue = "ShowArticleSegue"
         case ShowPlaybackSegue = "ShowPlaybackSegue"
+        case DirectPlayPodcastSegue = "DirectPlayPodcastSegue"
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -175,6 +194,13 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
                 playbackController.currentItem = .LiveStreamItem
                 break
             }
+        case .DirectPlayPodcastSegue:
+            defer { selectedPodcast = nil }
+            guard let playbackController = segue.destinationViewController as? PlaybackViewController,
+                let pod = selectedPodcast
+                else { fatalError("segue not possible") }
+            playbackController.currentItem = .PodcastItem(pod)
+            
         case .ShowPlaybackSegue:
             break
         case .ShowArticleSegue:

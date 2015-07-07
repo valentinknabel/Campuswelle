@@ -32,7 +32,7 @@ class PlaybackBarViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        self.refresh()
     }
     
     override func viewWillLayoutSubviews() {
@@ -42,7 +42,6 @@ class PlaybackBarViewController: UIViewController {
 
         if let bar = view.superview where view.frame != bar.bounds {
             view.frame = bar.bounds
-            print(view.frame)
         }
         
         if case .Empty = PodcastPlayer.sharedInstance.status {

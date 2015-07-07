@@ -158,6 +158,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Shj-CY-T4B" kind="presentation" identifier="DirectPlayPodcastSegue" id="V0O-ps-8XE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bc2-cI-lpv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -442,7 +445,7 @@
         <image name="ios7-volume-low" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bpo-tF-Vs7"/>
+        <segue reference="V0O-ps-8XE"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.80000000000000004" green="0.20000000000000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
