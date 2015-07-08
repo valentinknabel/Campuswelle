@@ -12,6 +12,7 @@ class NewsViewController: UIViewController, SegueHandlerType {
 
     var toolBarController: AnyObject?
     var news: News!
+    @IBOutlet var webViewActivityIndicator: UIActivityIndicatorView!
     @IBOutlet var webView: UIWebView!
     var contentWrapper = WebViewWrapperDelegate()
     
@@ -31,6 +32,7 @@ class NewsViewController: UIViewController, SegueHandlerType {
         // Do any additional setup after loading the view.
         //self.navigationItem.title = article.title
         
+        contentWrapper.webViewActivityIndicator = webViewActivityIndicator
         contentWrapper.webView = webView
         contentWrapper.setContent(news: news)
         

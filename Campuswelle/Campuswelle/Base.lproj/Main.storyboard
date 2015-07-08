@@ -224,19 +224,27 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vzh-9Q-FNE">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <animations/>
+                                <color key="color" red="0.1529411765" green="0.16078431369999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vzh-9Q-FNE" firstAttribute="centerY" secondItem="c1p-15-Ipz" secondAttribute="centerY" id="4hA-9r-NqO"/>
                             <constraint firstItem="c1p-15-Ipz" firstAttribute="width" secondItem="LyQ-Pe-qQo" secondAttribute="width" id="PuP-w3-FQ8"/>
                             <constraint firstItem="c1p-15-Ipz" firstAttribute="height" secondItem="LyQ-Pe-qQo" secondAttribute="height" id="X4k-s5-RJv"/>
                             <constraint firstAttribute="centerX" secondItem="c1p-15-Ipz" secondAttribute="centerX" id="XEk-cZ-LEq"/>
+                            <constraint firstItem="vzh-9Q-FNE" firstAttribute="centerX" secondItem="c1p-15-Ipz" secondAttribute="centerX" id="XPp-pB-ZWn"/>
                             <constraint firstAttribute="centerY" secondItem="c1p-15-Ipz" secondAttribute="centerY" id="sr9-Y3-BnS"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <connections>
                         <outlet property="webView" destination="c1p-15-Ipz" id="Fjj-Eb-HeW"/>
+                        <outlet property="webViewActivityIndicator" destination="vzh-9Q-FNE" id="Qnz-Wa-m1d"/>
                         <segue destination="Shj-CY-T4B" kind="presentation" identifier="PlayPodcastSegue" id="v48-7O-bej"/>
                     </connections>
                 </viewController>

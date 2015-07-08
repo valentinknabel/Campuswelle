@@ -17,6 +17,7 @@ class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
             newValue.delegate = self
         }
     }
+    var webViewActivityIndicator: UIActivityIndicatorView!
     
     override init() {
         super.init()
@@ -38,6 +39,14 @@ class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
     
     private func prepareHTML(news: News) -> String {
         return embedHTML(news)
+    }
+    
+    func webViewDidStartLoad(webView: UIWebView) {
+        webViewActivityIndicator.stopAnimating()
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        webViewActivityIndicator.stopAnimating()
     }
     
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
