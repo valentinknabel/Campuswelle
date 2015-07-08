@@ -117,19 +117,40 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
             button.frame = CGRect(x: 0, y: 0, width: 22, height: 22)
             button.addTarget(self, action: "playAccessoryButtonTapped:withEvent:", forControlEvents: UIControlEvents.TouchUpInside)
         }
-        
-        func setCellImage(image: UIImage) {
-            let imageSize = CGSizeMake(43, 43)
-            UIGraphicsBeginImageContextWithOptions(imageSize, true, UIScreen.mainScreen().scale)
-            let imageRect = CGRectMake(0.0, 0.0, imageSize.width, imageSize.height)
-            cell.imageView?.image?.drawInRect(imageRect)
-            cell.imageView?.image = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
+        else {
+            cell.accessoryView = nil
         }
         
+        func setCellImage(image: UIImage) {
+            func CGSizeAspectFill(aspectRatio: CGSize, var minimumSize: CGSize) -> CGSize
+            {
+                let mW = minimumSize.width / aspectRatio.width
+                let mH = minimumSize.height / aspectRatio.height
+                if( mH > mW ) {
+                    minimumSize.width = minimumSize.height / aspectRatio.height * aspectRatio.width
+                }
+                else if( mW > mH ) {
+                    minimumSize.height = minimumSize.width / aspectRatio.width * aspectRatio.height
+                }
+                return minimumSize
+            }
+            
+            main { () -> () in
+                let imageSize = CGSizeMake(43, 43)
+                UIGraphicsBeginImageContextWithOptions(imageSize, false, UIScreen.mainScreen().scale)
+                let aspectSize = CGSizeAspectFill(image.size, minimumSize: imageSize)
+                let imageRect = CGRect(origin: CGPoint(x: (imageSize.width - aspectSize.width)/2, y: (imageSize.height - aspectSize.height)/2), size: aspectSize)
+                image.drawInRect(imageRect)
+                cell.imageView?.image = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+                cell.imageView?.frame.size = imageSize
+                cell.setNeedsLayout()
+            }
+        }
+        
+        setCellImage(UIImage(assetIdentifier: .DefaultCover))
         news[indexPath.row].article.image(0) {
             guard let image = $0 else {
-                setCellImage(cell.imageView!.image!)
                 return
             }
             setCellImage(image)

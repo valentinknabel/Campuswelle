@@ -15,17 +15,17 @@ func contentHtmlMapper(content: String) -> TFHpple {
 }
 
 func htmlImageMapper(document: TFHpple) -> [NSURL] {
-    let elements: [TFHppleElement] = document.searchWithXPathQuery("img[@url]") as! [TFHppleElement]
+    let elements: [TFHppleElement] = document.searchWithXPathQuery("//img[@src]") as! [TFHppleElement]
     var result: [NSURL] = []
     for e in elements {
         let dict = e.attributes as! [String:String]
-        result.append(NSURL(string: dict["url"]!)!)
+        result.append(NSURL(string: dict["src"]!)!)
     }
     return result
 }
 
 func htmlVideoMapper(document: TFHpple) -> [NSURL] {
-    let elements: [TFHppleElement] = document.searchWithXPathQuery("source[@src]") as! [TFHppleElement]
+    let elements: [TFHppleElement] = document.searchWithXPathQuery("//source[@src]") as! [TFHppleElement]
     var result: [NSURL] = []
     for e in elements {
         let dict = e.attributes as! [String:String]
