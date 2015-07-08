@@ -36,6 +36,18 @@ public struct Article: News, CustomStringConvertible {
 
 import UIKit
 
+ extension Article: Equatable { }
+
+public func ==(lhs: Article, rhs: Article) -> Bool {
+    return lhs.title == rhs.title
+        && lhs.link == rhs.link
+        && lhs.desc == rhs.desc
+        && lhs.categories == rhs.categories
+        && lhs.content == rhs.content
+        && lhs.imageUrls == rhs.imageUrls
+        && lhs.videoUrls == rhs.videoUrls
+}
+
 public extension Article {
     
     public func image(index: Int, callback: (UIImage?) -> Void) {

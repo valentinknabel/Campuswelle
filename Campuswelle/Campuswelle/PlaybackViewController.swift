@@ -29,6 +29,7 @@ class PlaybackViewController: UIViewController {
             PodcastPlayer.sharedInstance.currentItem = PodcastPlayer.PlayingItem.PodcastItem(p)
         }
     }
+    @IBOutlet weak var roundView: UIVisualEffectView!
     @IBOutlet var playButton: UIButton!
     @IBOutlet var pauseButton: UIButton!
     @IBOutlet var rewindButton: UIButton!
@@ -36,7 +37,7 @@ class PlaybackViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var blurImageView: UIImageView!
     @IBOutlet weak var audioSlider: MPVolumeView!
-    @IBOutlet weak var podcastProgress: UIProgressView!
+    @IBOutlet weak var podcastProgress: UIProgressView?
     @IBOutlet weak var podcastSlider: UISlider!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subLabel: UILabel?
@@ -108,9 +109,20 @@ class PlaybackViewController: UIViewController {
         //audioSlider.setMinimumVolumeSliderImage(UIImage(assetIdentifier: .VolumeMin), forState: .Normal)
         //audioSlider.setMaximumVolumeSliderImage(UIImage(assetIdentifier: .VolumeMax), forState: .Normal)
         
-        self.podcast?.article.image(0) {
-            guard let image = $0 else { return }
-            self.imageView.image = image
+        roundView.layer.cornerRadius = roundView.frame.size.height / 2
+        roundView.subviews.first?.layer.cornerRadius = roundView.frame.size.height / 2
+        
+        switch PodcastPlayer.sharedInstance.currentItem {
+        case .PodcastItem(let p):
+            p.article.image(0) {
+                guard let image = $0,
+                    case PodcastPlayer.PlayingItem.PodcastItem(let new) = PodcastPlayer.sharedInstance.currentItem
+                    where new == p
+                    else { return }
+                self.imageView.image = image
+            }
+        default:
+            self.imageView.image = UIImage(assetIdentifier: .DefaultCover)
         }
         
         secondsObserver(nil)
@@ -139,7 +151,7 @@ class PlaybackViewController: UIViewController {
         
         // set time
         if let (current, limit) = pair {
-            self.podcastProgress.progress = Float(current/limit)
+            self.podcastProgress?.progress = Float(current/limit)
             self.podcastSlider.value = Float(current/limit)
             self.currentLabel.text = timeString(current)
             self.limitLabel.text = timeString(limit)
@@ -149,7 +161,7 @@ class PlaybackViewController: UIViewController {
             }
         }
         else {
-            self.podcastProgress.progress = 0.0
+            self.podcastProgress?.progress = 0.0
             self.podcastSlider.value = 0.0
             self.currentLabel.text = ""
             self.limitLabel.text = ""

@@ -16,3 +16,13 @@ public struct Podcast: News {
     public let enclosure: NSURL
     public let duration: NSTimeInterval
 }
+
+ extension Podcast: Equatable { }
+
+public func ==(lhs: Podcast, rhs: Podcast) -> Bool {
+    return lhs.article == rhs.article
+        && lhs.subtitle == rhs.subtitle
+        && lhs.summary == rhs.summary
+        && lhs.enclosure == rhs.enclosure
+        && lhs.duration == rhs.duration
+}
