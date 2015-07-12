@@ -110,7 +110,9 @@ class PlaybackViewController: UIViewController {
         //audioSlider.setMaximumVolumeSliderImage(UIImage(assetIdentifier: .VolumeMax), forState: .Normal)
         
         roundView.layer.cornerRadius = roundView.frame.size.height / 2
-        roundView.subviews.first?.layer.cornerRadius = roundView.frame.size.height / 2
+        roundView.subviews.map {
+            $0.layer.cornerRadius = $0.frame.size.height / 2
+        }
         
         switch PodcastPlayer.sharedInstance.currentItem {
         case .PodcastItem(let p):

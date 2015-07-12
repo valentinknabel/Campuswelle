@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.20" systemVersion="15A204h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yMS-In-MLV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="15A216g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yMS-In-MLV">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -194,13 +194,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Vk-IR-YIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="up" id="wla-3Z-rQm">
-                    <pressTypeMask key="allowedPressTypes"/>
                     <connections>
                         <segue destination="Shj-CY-T4B" kind="presentation" id="PnC-HO-urU"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <tapGestureRecognizer id="8FY-sD-xbS">
-                    <pressTypeMask key="allowedPressTypes"/>
                     <connections>
                         <segue destination="Shj-CY-T4B" kind="presentation" id="bpo-tF-Vs7"/>
                     </connections>
@@ -283,7 +281,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vud-wT-Aao">
-                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                            <rect key="frame" x="0.0" y="2" width="30" height="30"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <state key="normal" image="ios7-arrow-down"/>
@@ -295,13 +293,14 @@
                                     <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstItem="vud-wT-Aao" firstAttribute="centerY" secondItem="PH3-L8-ccP" secondAttribute="centerY" id="PaI-Qn-G26"/>
+                                        <constraint firstItem="vud-wT-Aao" firstAttribute="centerY" secondItem="PH3-L8-ccP" secondAttribute="centerY" constant="2" id="PaI-Qn-G26"/>
                                         <constraint firstItem="vud-wT-Aao" firstAttribute="centerX" secondItem="PH3-L8-ccP" secondAttribute="centerX" id="W26-4D-Xj7"/>
                                         <constraint firstItem="vud-wT-Aao" firstAttribute="width" secondItem="PH3-L8-ccP" secondAttribute="width" id="u1p-GH-byL"/>
                                         <constraint firstItem="vud-wT-Aao" firstAttribute="height" secondItem="PH3-L8-ccP" secondAttribute="height" id="yre-ri-PQU"/>
                                     </constraints>
                                 </view>
                                 <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Fli-tF-Gep"/>
                                     <constraint firstAttribute="width" constant="30" id="orI-Hn-EtO"/>
@@ -479,7 +478,6 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="np4-Lf-eOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="down" id="6FJ-fG-Ggi">
-                    <pressTypeMask key="allowedPressTypes"/>
                     <connections>
                         <action selector="unwindSegue:" destination="Shj-CY-T4B" id="AW2-4k-bF0"/>
                     </connections>
