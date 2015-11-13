@@ -30,6 +30,7 @@ class WebViewWrapperDelegate: NSObject, UIWebViewDelegate {
     }
     
     private func embedHTML(news: News) -> String {
+        print(news.article.content)
         let htmlWrapperPath = NSBundle.mainBundle().pathForResource("wrapper", ofType: "html")
         // the file is inside the bundle => implicit unwrap is okay
         let htmlWrapper = try! NSString(contentsOfFile: htmlWrapperPath!, encoding: NSUTF8StringEncoding)
