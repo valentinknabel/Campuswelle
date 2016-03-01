@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ABCE9E8CE382E6EB3055632C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FCF13BD47C1A26E91BC98 /* libPods.a */; };
+		BA776F3C1C71DDE00023A4DD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA776F3B1C71DDE00023A4DD /* AudioToolbox.framework */; };
 		DA0B83AF1B45A20500C291A1 /* PlaybackBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0B83AD1B45A20500C291A1 /* PlaybackBarViewController.swift */; };
 		DA0B83B01B45A20500C291A1 /* PlaybackBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA0B83AE1B45A20500C291A1 /* PlaybackBarViewController.xib */; };
 		DA1E7A721B0CD29B00263026 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1E7A711B0CD29B00263026 /* NewsTableViewController.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		282FCF13BD47C1A26E91BC98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA776F3B1C71DDE00023A4DD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C286C656F7E7666AB413866E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DA04DFB41B2AEB630085C88A /* Campuswelle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Campuswelle.entitlements; sourceTree = "<group>"; };
 		DA0B83AD1B45A20500C291A1 /* PlaybackBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackBarViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				DA759DD81AE3043D00746678 /* AVFoundation.framework in Frameworks */,
 				DA759DCB1AE2E21500746678 /* WebKit.framework in Frameworks */,
 				ABCE9E8CE382E6EB3055632C /* libPods.a in Frameworks */,
+				BA776F3C1C71DDE00023A4DD /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +141,7 @@
 		AE5C1C0A33F173384347B134 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA776F3B1C71DDE00023A4DD /* AudioToolbox.framework */,
 				DA34AF591AFA3E0C0064B45E /* libxml2.2.dylib */,
 				DA759DDB1AE3308000746678 /* MediaPlayer.framework */,
 				DA759DD71AE3043D00746678 /* AVFoundation.framework */,
@@ -319,6 +323,7 @@
 				DA5AD6C21ADFF70E00C740E6 /* Frameworks */,
 				DA5AD6C31ADFF70E00C740E6 /* Resources */,
 				24DAD0FBF1E1AA1DC8C9B083 /* Copy Pods Resources */,
+				D54CAA4906556AC67A3766D4 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -365,10 +370,10 @@
 								enabled = 1;
 							};
 							com.apple.InterAppAudio = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.SafariKeychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -449,6 +454,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D54CAA4906556AC67A3766D4 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -626,7 +646,7 @@
 				INFOPLIST_FILE = Campuswelle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.valentinknabel.Campuswelle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.conclurer.Campuswelle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Campuswelle-Bridging-Header.h";
@@ -655,7 +675,7 @@
 				INFOPLIST_FILE = Campuswelle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.valentinknabel.Campuswelle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.conclurer.Campuswelle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Campuswelle-Bridging-Header.h";
