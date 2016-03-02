@@ -16,7 +16,7 @@ private func toItem(podcast: Podcast) -> AVPlayerItem {
 }
 
 private let livestreamURL = NSURL(string: "http://campuswelle.uni-ulm.de:8000/listen.mp3")!
-private let metaDataURL = NSURL(string: "http://campuswelle.uni-ulm.de/wp-content/themes/campuswelle/stream-meta_api.php?amount=1")!
+private let metaDataURL = NSURL(string: "http://campuswelle.uni-ulm.de/wp-content/themes/campuswelle_v2/stream-meta_api.php?amount=1")!
 
 /// The podcast player can play a livestream and podcasts.
 public class PodcastPlayer {
