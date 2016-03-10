@@ -51,7 +51,20 @@ class NewsTableViewController: UITableViewController, SegueHandlerType {
         self.refreshControl?.addTarget(self, action: "tryReload", forControlEvents: UIControlEvents.ValueChanged)
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let button = UIButton(type: UIButtonType.System)
+        button.setImage(UIImage(assetIdentifier: .Play), forState: UIControlState.Normal)
+        button.setTitle("Live-Stream", forState: .Normal)
+        button.addTarget(self.navigationItem.rightBarButtonItem?.target, action: self.navigationItem.rightBarButtonItem!.action, forControlEvents: UIControlEvents.TouchUpInside)
+        button.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        button.titleLabel?.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        button.imageView?.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        button.tintColor = self.navigationItem.rightBarButtonItem?.tintColor
+        button.sizeToFit()
+        let it = UIBarButtonItem(customView: button)
+
+        self.navigationItem.rightBarButtonItem? = it
+        //title = "Live-Stream"
+        
         self.tryReload()
     }
 

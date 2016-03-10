@@ -140,7 +140,8 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Campuswelle" id="TPv-W5-fWM">
-                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="04B-Ig-fac">
+                        <barButtonItem key="rightBarButtonItem" image="ios7-play" id="04B-Ig-fac">
+                            <color key="tintColor" red="0.15686274510000001" green="0.33725490200000002" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Shj-CY-T4B" kind="presentation" identifier="PlayLiveSegue" id="s11-Ng-0cH"/>
                             </connections>
@@ -452,7 +453,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="default-cover" width="250" height="250"/>
+        <image name="default-cover" width="60" height="60"/>
         <image name="ios7-arrow-down" width="30" height="30"/>
         <image name="ios7-fastforward" width="30" height="30"/>
         <image name="ios7-pause" width="30" height="30"/>
