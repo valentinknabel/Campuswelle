@@ -36,7 +36,7 @@
 		DA6E8DBE1AE03A1E0075525C /* news-data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6E8DBD1AE03A1E0075525C /* news-data.swift */; };
 		DA701D661AE3D73600A19244 /* common-vc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA701D651AE3D73600A19244 /* common-vc.swift */; };
 		DA701D6C1AE3E29500A19244 /* WebViewWrapperDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA701D6B1AE3E29500A19244 /* WebViewWrapperDelegate.swift */; };
-		DA759DC91AE2DC0000746678 /* additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DC81AE2DC0000746678 /* additions.swift */; };
+		DA759DC91AE2DC0000746678 /* concurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DC81AE2DC0000746678 /* concurrency.swift */; };
 		DA759DCB1AE2E21500746678 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA759DCA1AE2E21500746678 /* WebKit.framework */; };
 		DA759DD11AE2ED9A00746678 /* wrapper.html in Resources */ = {isa = PBXBuildFile; fileRef = DA759DD01AE2ED9A00746678 /* wrapper.html */; };
 		DA759DD61AE2F7E200746678 /* PlaybackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA759DD51AE2F7E200746678 /* PlaybackViewController.swift */; };
@@ -101,7 +101,7 @@
 		DA6E8DBD1AE03A1E0075525C /* news-data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "news-data.swift"; sourceTree = "<group>"; };
 		DA701D651AE3D73600A19244 /* common-vc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "common-vc.swift"; sourceTree = "<group>"; };
 		DA701D6B1AE3E29500A19244 /* WebViewWrapperDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewWrapperDelegate.swift; sourceTree = "<group>"; };
-		DA759DC81AE2DC0000746678 /* additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = additions.swift; sourceTree = "<group>"; };
+		DA759DC81AE2DC0000746678 /* concurrency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = concurrency.swift; sourceTree = "<group>"; };
 		DA759DCA1AE2E21500746678 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		DA759DD01AE2ED9A00746678 /* wrapper.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = wrapper.html; sourceTree = "<group>"; };
 		DA759DD31AE2F72500746678 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -222,7 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				DA04DFB41B2AEB630085C88A /* Campuswelle.entitlements */,
-				DA759DC81AE2DC0000746678 /* additions.swift */,
+				DA759DC81AE2DC0000746678 /* concurrency.swift */,
 				DA701D651AE3D73600A19244 /* common-vc.swift */,
 				DA6E8DB01AE000400075525C /* Campuswelle-Bridging-Header.h */,
 				DA759DDD1AE330AE00746678 /* PodcastPlayer.swift */,
@@ -486,7 +486,7 @@
 				DA6E8DAD1ADFFF060075525C /* article-data.swift in Sources */,
 				DA6E8DA71ADFFED10075525C /* AlbumCollectionViewController.swift in Sources */,
 				DA6E8DB61AE026D10075525C /* Article.swift in Sources */,
-				DA759DC91AE2DC0000746678 /* additions.swift in Sources */,
+				DA759DC91AE2DC0000746678 /* concurrency.swift in Sources */,
 				DA701D6C1AE3E29500A19244 /* WebViewWrapperDelegate.swift in Sources */,
 				DA34AF681AFA444E0064B45E /* news-html.swift in Sources */,
 				DA34AF651AFA3F0B0064B45E /* TFHppleElement.m in Sources */,
