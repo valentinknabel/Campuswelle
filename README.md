@@ -77,4 +77,10 @@ The iOS Development profile will be managed automatically by Xcode.
 
 In order to genrate a new iOS Distribution Profile in Member Center, use the same information provided under `README.md > Member Center > iOS App ID`.
 
+### Screenshots
 
+Screenshots for all devices are created by running:
+
+`
+$ snapshot
+`

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		ABCE9E8CE382E6EB3055632C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 282FCF13BD47C1A26E91BC98 /* libPods.a */; };
+		BA1FDE3F1CABB038000EF65C /* CampuswelleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FDE3E1CABB038000EF65C /* CampuswelleUITests.swift */; };
+		BA1FDE471CABB075000EF65C /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FDE461CABB075000EF65C /* SnapshotHelper.swift */; };
 		BA776F3C1C71DDE00023A4DD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA776F3B1C71DDE00023A4DD /* AudioToolbox.framework */; };
 		DA0B83AF1B45A20500C291A1 /* PlaybackBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0B83AD1B45A20500C291A1 /* PlaybackBarViewController.swift */; };
 		DA0B83B01B45A20500C291A1 /* PlaybackBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA0B83AE1B45A20500C291A1 /* PlaybackBarViewController.xib */; };
@@ -48,6 +50,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BA1FDE411CABB038000EF65C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA5AD6BD1ADFF70E00C740E6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA5AD6C41ADFF70E00C740E6;
+			remoteInfo = Campuswelle;
+		};
 		DA5AD6DD1ADFF70E00C740E6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DA5AD6BD1ADFF70E00C740E6 /* Project object */;
@@ -59,6 +68,10 @@
 
 /* Begin PBXFileReference section */
 		282FCF13BD47C1A26E91BC98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA1FDE3C1CABB037000EF65C /* CampuswelleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CampuswelleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA1FDE3E1CABB038000EF65C /* CampuswelleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampuswelleUITests.swift; sourceTree = "<group>"; };
+		BA1FDE401CABB038000EF65C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA1FDE461CABB075000EF65C /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		BA776F3B1C71DDE00023A4DD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C286C656F7E7666AB413866E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DA04DFB41B2AEB630085C88A /* Campuswelle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Campuswelle.entitlements; sourceTree = "<group>"; };
@@ -115,6 +128,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BA1FDE391CABB037000EF65C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA5AD6C21ADFF70E00C740E6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -150,6 +170,16 @@
 				282FCF13BD47C1A26E91BC98 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA1FDE3D1CABB038000EF65C /* CampuswelleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BA1FDE461CABB075000EF65C /* SnapshotHelper.swift */,
+				BA1FDE3E1CABB038000EF65C /* CampuswelleUITests.swift */,
+				BA1FDE401CABB038000EF65C /* Info.plist */,
+			);
+			path = CampuswelleUITests;
 			sourceTree = "<group>";
 		};
 		C1E7DD18CE3FAE1F6DC3A1C0 /* Pods */ = {
@@ -203,6 +233,7 @@
 				DA5AD6EC1ADFF71A00C740E6 /* Cartfile */,
 				DA5AD6C71ADFF70E00C740E6 /* Campuswelle */,
 				DA5AD6DF1ADFF70E00C740E6 /* CampuswelleTests */,
+				BA1FDE3D1CABB038000EF65C /* CampuswelleUITests */,
 				DA5AD6C61ADFF70E00C740E6 /* Products */,
 				C1E7DD18CE3FAE1F6DC3A1C0 /* Pods */,
 				AE5C1C0A33F173384347B134 /* Frameworks */,
@@ -214,6 +245,7 @@
 			children = (
 				DA5AD6C51ADFF70E00C740E6 /* Campuswelle.app */,
 				DA5AD6DC1ADFF70E00C740E6 /* CampuswelleTests.xctest */,
+				BA1FDE3C1CABB037000EF65C /* CampuswelleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -314,6 +346,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BA1FDE3B1CABB037000EF65C /* CampuswelleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA1FDE451CABB038000EF65C /* Build configuration list for PBXNativeTarget "CampuswelleUITests" */;
+			buildPhases = (
+				BA1FDE381CABB037000EF65C /* Sources */,
+				BA1FDE391CABB037000EF65C /* Frameworks */,
+				BA1FDE3A1CABB037000EF65C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA1FDE421CABB038000EF65C /* PBXTargetDependency */,
+			);
+			name = CampuswelleUITests;
+			productName = CampuswelleUITests;
+			productReference = BA1FDE3C1CABB037000EF65C /* CampuswelleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		DA5AD6C41ADFF70E00C740E6 /* Campuswelle */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA5AD6E61ADFF70E00C740E6 /* Build configuration list for PBXNativeTarget "Campuswelle" */;
@@ -358,10 +408,14 @@
 		DA5AD6BD1ADFF70E00C740E6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Valentin Knabel";
 				TargetAttributes = {
+					BA1FDE3B1CABB037000EF65C = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = DA5AD6C41ADFF70E00C740E6;
+					};
 					DA5AD6C41ADFF70E00C740E6 = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = LMF68UG2BU;
@@ -398,11 +452,19 @@
 			targets = (
 				DA5AD6C41ADFF70E00C740E6 /* Campuswelle */,
 				DA5AD6DB1ADFF70E00C740E6 /* CampuswelleTests */,
+				BA1FDE3B1CABB037000EF65C /* CampuswelleUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BA1FDE3A1CABB037000EF65C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA5AD6C31ADFF70E00C740E6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -474,6 +536,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BA1FDE381CABB037000EF65C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA1FDE3F1CABB038000EF65C /* CampuswelleUITests.swift in Sources */,
+				BA1FDE471CABB075000EF65C /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA5AD6C11ADFF70E00C740E6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -517,6 +588,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BA1FDE421CABB038000EF65C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DA5AD6C41ADFF70E00C740E6 /* Campuswelle */;
+			targetProxy = BA1FDE411CABB038000EF65C /* PBXContainerItemProxy */;
+		};
 		DA5AD6DE1ADFF70E00C740E6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DA5AD6C41ADFF70E00C740E6 /* Campuswelle */;
@@ -544,6 +620,33 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BA1FDE431CABB038000EF65C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = CampuswelleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.valentinknabel.CampuswelleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Campuswelle;
+			};
+			name = Debug;
+		};
+		BA1FDE441CABB038000EF65C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				INFOPLIST_FILE = CampuswelleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.valentinknabel.CampuswelleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Campuswelle;
+			};
+			name = Release;
+		};
 		DA5AD6E41ADFF70E00C740E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -722,6 +825,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BA1FDE451CABB038000EF65C /* Build configuration list for PBXNativeTarget "CampuswelleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA1FDE431CABB038000EF65C /* Debug */,
+				BA1FDE441CABB038000EF65C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DA5AD6C01ADFF70E00C740E6 /* Build configuration list for PBXProject "Campuswelle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

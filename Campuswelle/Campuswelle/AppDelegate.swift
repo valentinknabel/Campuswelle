@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+#if DEBUG
+        SDStatusBarManager.sharedInstance.enableOverrides()
+#endif
+        
         PodcastPlayer.sharedInstance
         
         UITabBar.appearance().tintColor = UIColor(red: 204/255.0, green: 51/255.0, blue: 0.0, alpha: 1.0)
