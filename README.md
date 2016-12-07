@@ -1,4 +1,7 @@
 # Campuswelle
+
+**DISCONTINUED**
+
 The app for [Campuswelle](http://campuswelle.uni-ulm.de).
 
 ## Setting up
